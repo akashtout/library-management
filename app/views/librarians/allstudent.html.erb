@@ -1,10 +1,24 @@
  <%if current_librarian%>
+
+<div class="input-group  pull-right">
+  <div class="form-outline">
+    <input type="search" id="form1" class="form-control" />
+    <label class="form-label" for="form1">Search</label>
+  </div>
+  <button type="button" class="btn btn-primary">
+    <i class="fas fa-search">find</i>
+  </button>
+</div>
+
  <h1 class="text-primary">List of Student</h1>
 <table class="table table-bordered">
  <thead class="thead-dark">
    <tr>
    	 <th>Student Id</th>
      <th>book Id</th>
+     <th>Student name</th>
+     <th>Issued Date</th>
+     <th>Return Date</th>
         </tr>
  </thead>
  <tbody>
@@ -12,6 +26,9 @@
   <tr>
  	   <td><%= view.librarian_id %></td>
      <td><%= view.book_id%></td>
+     <td><%= view.student%></td>
+     <td><%= view.created_at.to_date%></td>
+     <td><%= view.returndate%></td>
        <% end %>
   </tr>
  </tbody>

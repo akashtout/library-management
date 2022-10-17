@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_13_065038) do
+ActiveRecord::Schema.define(version: 2022_10_17_110342) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -32,9 +32,10 @@ ActiveRecord::Schema.define(version: 2022_10_13_065038) do
     t.integer "librarian_id"
     t.integer "book_id"
     t.boolean "status"
-    t.string "usertype"
+    t.string "student"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "returndate"
     t.index ["book_id"], name: "index_borrows_on_book_id"
     t.index ["librarian_id"], name: "index_borrows_on_librarian_id"
   end

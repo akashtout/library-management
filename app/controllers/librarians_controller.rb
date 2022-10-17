@@ -11,6 +11,15 @@ def allstudent
    @allstudent=Borrow.where(status:'true')
 end
 
+def borrowbook
+ @borrowbook=Borrow.where({ student: current_librarian.name, status: "true" })
+end
+
+def requestedbook
+ @requestedbook=Borrow.where({ student: current_librarian.name, status: "false" })
+
+end
+
 def show  
 end
 

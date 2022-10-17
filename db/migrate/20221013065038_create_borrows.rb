@@ -4,7 +4,7 @@ class CreateBorrows < ActiveRecord::Migration[6.1]
       t.belongs_to :librarian, foreign_key: true
       t.belongs_to :book, foreign_key: true
       t.boolean :status
-      t.string :usertype
+      t.string :student
       t.timestamps
     end
   end

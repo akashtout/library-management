@@ -1,5 +1,5 @@
 
-<h1 class="text-center text-success"><strong>welcome to the library</strong></h1>
+<h1 class="text-center text-success"><strong>Welcome to the library</strong></h1>
   <%if check_user%>
   <h1  class="text-primary">Student Details</h1>
 <table class="table table-bordered">
@@ -20,9 +20,13 @@
 </table>
 
 <button type="button" class="btn btn-dark"> <%= link_to 'Show Book',studentindex_path%></button>
-<button type="button"class="btn btn-dark"><%= link_to 'Total Issue Books'%></button>
-<button type="button"class="btn btn-dark"><%= link_to 'Return Books'%></button>  
+<button type="button"class="btn btn-dark"><%= link_to 'Borrow Books',borrowbook_path %></button>
+<button type="button"class="btn btn-dark"><%= link_to 'Requested Books',requestedbook_path%></button>
+
+
+
 <% else %>
+
  <h1 class="text-primary">Librarian Details</h1>
 <table class="table table-bordered">
  <thead class="thead-dark">
@@ -44,6 +48,5 @@
 <button type="button" class="btn btn-dark"> <%= link_to 'View Books',books_path%></button>
 <button type="button"class="btn btn-dark"><%= link_to 'Add new Book',new_book_path%></button>
 <button type="button"class="btn btn-dark"><%= link_to 'View issued Books',allstudent_path%></button>
-<button type="button"class="btn btn-dark"><%= link_to 'view not return Books'%></button>
-<button type="button"class="btn btn-dark"><%= link_to 'borrow details'%></button>
+<button type="button" class="btn btn-dark"> <%= link_to 'View Return Book',returnb_path%></button>
 <% end %>

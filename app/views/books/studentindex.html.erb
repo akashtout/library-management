@@ -7,8 +7,9 @@
     <th>Title</th>
     <th>Price</th>
     <th>Description</th>
-     <th>View</th>
-       <th>Request Book</th>
+    <th>Author</th>
+    <th>View</th>
+    <th>Request Book</th>
   </tr>
   </thead>
 <tbody>
@@ -23,7 +24,7 @@
    <td> 
      <%= form_tag borrowcreate_path, method: :post do %>
      <%= hidden_field_tag :book_id, book.id %>
-     <%= submit_tag "Request Book" %>
+     <%= submit_tag "Request Book",:class => "btn btn btn-sm " %>
       <% end %>
    </td>
  </tr>
@@ -32,4 +33,3 @@
 </table>
 <button type="button" class="btn btn-dark"> <%= link_to 'Back to Home',libraryl_path%></button>
 <%end%>
-
