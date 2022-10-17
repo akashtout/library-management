@@ -1,0 +1,19 @@
+<div class="login">
+<div class="container">
+<div class="form">
+<%= form_for(@book) do |f| %>
+ <%= label_tag 'title'%><br>  
+ <%= f.text_field :title, :placeholder => "title" %><br>
+ <%= label_tag 'price'%><br>
+ <%= f.number_field :price, :placeholder => "price" %><br>
+ <%= label_tag 'Description'%><br>
+ <%= f.text_field :description, :placeholder => "Description" %><br>
+ <%= label_tag 'Author id'%><br>
+ <%= f.number_field :author_id, :placeholder => "author_id" %><br>
+ <%= label_tag 'Author'%><br>
+ <%= f.text_field :author_name, :placeholder => "Author" %><br>
+ <%= f.submit "Create Book", class: "btn-submit" %>   
+<% end %>
+</div>
+</div>
+</div>

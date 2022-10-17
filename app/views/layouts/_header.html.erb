@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>libraryapp</title>
+    <nav class="navbar navbar-inverse">
+   <nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/index">Library Management System</a>
+  <%if current_librarian%>
+  <a  class="navbar-brand  pull-right" href="/logout">Logout</a>
+  <% else %>
+  <a  class="navbar-brand  pull-right" href="/signup">Signup</a>
+  <a  class="navbar-brand  pull-right" href="/login">Login</a>
+ <%end%>
+</nav>
+</nav>
+
+</head>
+  <body>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+ </body>
+</html>
+
+
+

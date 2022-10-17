@@ -1,0 +1,5 @@
+<%if current_librarian%>
+<h1 class="text-center text-primary"><strong>Edit Book</strong></h1>
+<div class="text-center text-dark"><%= render partial: "form" %></div>
+<button type="button" class="btn btn-dark"> <%= link_to 'Back to Home',libraryl_path%></button>
+<%end%>

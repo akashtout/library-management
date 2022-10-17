@@ -1,0 +1,26 @@
+ <%if current_librarian%>
+<h1  class="text-success"><strong>Details Of request book from Student</strong></h1>
+<table class="table table-bordered">
+ <thead class="thead-dark">
+  <tr>
+    <th>Student Id</th>
+    <th>book_id</th>
+    <th>Send to Librarian</th>
+    <th>Request</th>
+  </tr>
+  </thead>
+<tbody>
+	 <% @borrowshow.each do |b| %>
+ <tr>
+     <td><%= b.librarian_id %></td>
+     <td><%= b.book_id %></td>
+         <td><%= b.usertype %></td>
+     <td><%= link_to  'Accept Request'%></td>
+  </tr>
+<%end%>
+</tbody>
+</table>
+<button type="button" class="btn btn-dark"> <%= link_to 'Back to Home',libraryl_path%></button>
+<%end%>
+
+

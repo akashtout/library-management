@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ resources :books
+ resources :borrows
+
+  post '/borrowcreate' => 'borrows#create'
+  get '/borrowshow' => 'borrows#borrowshow'
+  get '/allstudent' => 'librarians#allstudent'
+  get '/studentindex' => 'books#studentindex'
+  get '/studentshow' => 'books#studentshow'
+  root "librarians#index"
+  get '/libraryl' => 'librarians#libraryl'
+  get '/index' => 'librarians#index'
+  get '/signup' => 'librarians#new'
+  post '/librarians' => 'librarians#create'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 end
