@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
  resources :books
  resources :borrows
-
+  put '/accept/:id' => 'borrows#accept', as: 'accept'
   post '/borrowcreate' => 'borrows#create'
   get '/borrowshow' => 'borrows#borrowshow'
   get '/allstudent' => 'librarians#allstudent'

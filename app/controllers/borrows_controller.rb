@@ -9,8 +9,8 @@ class BorrowsController < ApplicationController
 
  def create
 
- 	borrow=Borrow.create(librarian_id:current_librarian.id,book_id:1,status:false,usertype:"librarian")
-    if borrow.save
+ 	@borrow=Borrow.create(librarian_id:current_librarian.id,book_id:params[:book_id],status:false,usertype:"librarian")
+    if @borrow.save
      flash[:notice] = "request sent!"
      redirect_to studentindex_path
      else
@@ -26,15 +26,15 @@ class BorrowsController < ApplicationController
  	 @borrow=Borrow.find(params[:id])
   end
 
-  def update
+  def accept
     @borrow=Borrow.find(params[:id])
-    if @borrow.update(status: true)
+    @borrow.update(status: true)
       flash[:notice] = "accepted book request"
       redirect_to libraryl_path
-    else
-   	 redirect_to studentindex_path
-    end
- end
+  end
+
+   def update
+   end
 
   def edit
   end
@@ -48,4 +48,5 @@ class BorrowsController < ApplicationController
    end
 
 end
+
 

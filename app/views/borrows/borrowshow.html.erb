@@ -11,16 +11,19 @@
   </thead>
 <tbody>
 	 <% @borrowshow.each do |b| %>
- <tr>
+   <tr>
      <td><%= b.librarian_id %></td>
      <td><%= b.book_id %></td>
-         <td><%= b.usertype %></td>
-     <td><%= link_to  'Accept Request'%></td>
-  </tr>
+     <td><%= b.usertype %></td>
+     <td><%= link_to "Accept Request", accept_path(b), method: "put" %></td>
 <%end%>
+  </tr>
 </tbody>
 </table>
 <button type="button" class="btn btn-dark"> <%= link_to 'Back to Home',libraryl_path%></button>
 <%end%>
 
 
+
+
+ 
