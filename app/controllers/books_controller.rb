@@ -1,11 +1,12 @@
 class BooksController < ApplicationController
-   
    def index
-    if params[:search_key]
+      @books = Book.all
+   end
+   def studentindex
+       if params[:search_key]
       @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
       "%#{params[:search_key]}%", "%#{params[:search_key]}%")
     else
-      @books = Book.all
     end
   end
   

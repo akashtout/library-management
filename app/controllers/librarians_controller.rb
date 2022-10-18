@@ -8,7 +8,12 @@ def new
 end
 
 def allstudent
-   @allstudent=Borrow.where(status:'true')
+    if params[:search_key]
+      @allstudent = Borrow.where("librarian_id LIKE ? OR book_id LIKE ? ", 
+      "%#{params[:search_key]}%", "%#{params[:search_key]}%")
+    else
+       @allstudent=Borrow.where(status:'true')
+    end
 end
 
 def borrowbook
@@ -38,6 +43,6 @@ end
 
 private
    def librarian_params
-      params.require(:librarian).permit(:name, :email, :password, :usertype)
+      params.require(:librarian).permit(:name, :email, :password, :usertype, :search_key)
    end
 end
