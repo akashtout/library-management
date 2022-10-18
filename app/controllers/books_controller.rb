@@ -1,13 +1,14 @@
 class BooksController < ApplicationController
-  def studentindex
-      @books= Book.all
+   
+   def index
+    if params[:search_key]
+      @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
+      "%#{params[:search_key]}%", "%#{params[:search_key]}%")
+    else
+      @books = Book.all
+    end
   end
-
-  def index
-     @books = Book.all  
-     flash.now[:notice] = "We have exactly #{@books.size} books available."
-  end
-
+  
   def new
      @book = Book.new
   end
@@ -53,6 +54,6 @@ end
 
   private
     def book_params
-      params.require(:book).permit(:title, :price,:description,:author_id,:author_name)
+      params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :search_key)
     end
   end

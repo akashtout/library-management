@@ -68,7 +68,7 @@ class BorrowsController < ApplicationController
 
   private
    def borrow_params
-      params.require(:borrow).permit(:librarian_id, :book_id, :student,:returndate,:status)
+      params.require(:borrow).permit(:librarian_id, :book_id, :student, :returndate, :status)
    end
 
 end

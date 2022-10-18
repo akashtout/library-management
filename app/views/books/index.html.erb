@@ -1,4 +1,12 @@
 <%if current_librarian%>
+  
+<div class="pull-right">
+<form action="<%= books_path %>">
+  <input type="text" placeholder="    Search here" name="search_key">
+  <button type="submit">Search</button>
+</form>
+</div>
+
 <h1 class="text-success">Availabe Books</h1>
 <table class="table table-bordered">
   <thead  class="thead-dark">

@@ -1,7 +1,7 @@
 class LibrariansController < ApplicationController
-def index
-   @librarians = Librarian.all
-end
+ def index
+   @librarian = Librarian.all
+ end
 
 def new
    @librarian = Librarian.new

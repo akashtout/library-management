@@ -1,13 +1,10 @@
  <%if current_librarian%>
 
-<div class="input-group  pull-right">
-  <div class="form-outline">
-    <input type="search" id="form1" class="form-control" />
-    <label class="form-label" for="form1">Search</label>
-  </div>
-  <button type="button" class="btn btn-primary">
-    <i class="fas fa-search">find</i>
-  </button>
+<div class="pull-right">
+<form action="<%= allstudent_path %>">
+  <input type="text" placeholder="    Search here" name="search">
+  <button type="submit">Search</button>
+</form>
 </div>
 
  <h1 class="text-primary">List of Student</h1>
