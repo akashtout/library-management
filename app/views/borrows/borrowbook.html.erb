@@ -1,0 +1,27 @@
+ <%if current_librarian%>
+ <h1 class="text-primary">Borrowed Book</h1>
+<table class="table table-bordered">
+ <thead class="thead-dark">
+   <tr>
+   	 <th>Student Id</th>
+     <th>book Id</th>
+     <th>Borrowed Date </th>
+     <th>Return Date </th>
+     <th>Return Book</th>
+    
+  </tr>
+ </thead>
+ <tbody>
+ 	  <% @borrowbook.each do |view| %>
+  <tr>
+     <td><%= view.librarian_id%></td>
+     <td><%= view.book_id%></td>
+ 	   <td><%=view.created_at.to_date%></td>
+     <td><%=view.returndate%></td>
+     <td><%= link_to " Return",return_path(view.id), method: "patch" %></td>
+  </tr>
+       <% end %>
+ </tbody>
+</table>
+<button type="button" class="btn btn-dark"> <%= link_to 'Back',libraryl_path%></button>
+<%end%>

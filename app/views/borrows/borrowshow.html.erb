@@ -11,13 +11,15 @@
   </tr>
   </thead>
 <tbody>
-   <% @borrowshow.each do |b| %>
+
+   <% @borrowshow.each do |borrowshow| %>
    <tr>
-     <td><%= b.librarian_id %></td>
-     <td><%= b.book_id %></td>
-     <td><%= b.student %></td>
-     <td><%= link_to "Accept", accept_path(b), method: "put" %></td>
-      <td><%= link_to "Reject", rejectr_path(b), method: :delete %></td>
+     <td><%= borrowshow.librarian_id %></td>
+     <td><%= borrowshow.book_id %></td>
+     <td><%= borrowshow.student %></td>
+     <td><%= link_to "Accept", accept_path(borrowshow),method: :put %></td>
+      <td><%= link_to "Reject", reject_path(borrowshow.id),method: :delete %></td>
+
    </tr>
    <%end%>
 </tbody>

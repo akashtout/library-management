@@ -1,22 +1,25 @@
 Rails.application.routes.draw do
+    delete '/books/:id' => 'books#destroy', as: 'des'
  resources :books
  resources :borrows
-  put '/accept/:id' => 'borrows#accept', as: 'accept'
-  put '/returnbook/:id' => 'borrows#returnbook', as: 'return'
-  delete '/reject/:id' => 'borrows#reject', as: 'rejectr'
-  get '/requestedbook' => 'librarians#requestedbook'
   post '/borrowcreate' => 'borrows#create'
+  get '/requestedbook' => 'borrows#requestedbook'
+  get '/borrowbook' => 'borrows#borrowbook'
   get '/borrowshow' => 'borrows#borrowshow'
   get '/showreturnbook' => 'borrows#showreturnbook', as: 'returnb'
-  get '/borrowbook' => 'librarians#borrowbook'
-  get '/allstudent' => 'librarians#allstudent'
+
+  patch '/returnbook/:id' => 'borrows#returnbook', as: 'return'
+  delete '/reject/:id' => 'borrows#reject', as: 'reject'
+  put '/accept/:id' => 'borrows#accept', as: 'accept'
+
   get '/studentindex' => 'books#studentindex'
-  get '/studentshow' => 'books#studentshow'
   root "librarians#index"
   get '/libraryl' => 'librarians#libraryl'
   get '/index' => 'librarians#index'
   get '/signup' => 'librarians#new'
   post '/librarians' => 'librarians#create'
+  get '/allstudent' => 'librarians#allstudent'
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
