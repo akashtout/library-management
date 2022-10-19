@@ -15,16 +15,22 @@ class BooksController < ApplicationController
   
   def new
      @books = Book.new
+   respond_to do |format|
+    format.html
+    format.js
+   end
   end
 
   def create
     @books = Book.new(book_params)
-    if @book.save
+    if @books.save
       flash[:notice] = "You have successfully created"
-      redirect_to books_path
-    else
+    
+      redirect_to libraryl_path
+         else
       render :new
     end
+
   end
 
   def show
@@ -38,7 +44,7 @@ class BooksController < ApplicationController
   def destroy
     @books = Book.find(params[:id])
     @books.destroy
-      flash[:notice] = "You have successfully Deleted"
+    flash[:notice] = "You have successfully Deleted"
     redirect_to books_path
   end
 

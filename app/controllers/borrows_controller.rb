@@ -11,8 +11,11 @@ class BorrowsController < ApplicationController
  	@borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
  		 student: current_librarian.name, status: false, returndate: "2023-01-30".to_date)
     if @borrow.save
-     flash[:notice] = "request sent!"
-     redirect_to studentindex_path
+      respond_to do |format|
+        format.html {redirect_to studentindex_path}
+        format.js
+      end
+
      else
     end
  end
@@ -45,8 +48,10 @@ end
   def accept
     @borrow=Borrow.find(params[:id])
     @borrow.update(status: true)
-      flash[:notice] = "accepted book request"
-      redirect_to borrowshow_path
+      respond_to do |format|
+        format.html {redirect_to borrowshow_path}
+        format.js
+      end
   end
 
   def returnbook
@@ -63,15 +68,17 @@ end
   def destroy
     @borrow = Borrow.find(params[:id])
     @borrow.destroy
-    flash[:notice] = "You have Cancel Request"
-     redirect_to requestedbook_path
+      respond_to do |format|
+       format.js
+      end
   end
 
   def reject
     @borrow = Borrow.find(params[:id])
     @borrow.destroy
-    flash[:notice] = "You have Rejected Request"
-     redirect_to borrowshow_path
+      respond_to do |format|
+        format.js
+      end
   end
 
   private

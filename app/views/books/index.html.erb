@@ -21,7 +21,7 @@
     <th>Remove</th>
   </tr>
   </thead>
-<tbody>
+<tbody  id="bookcreate">
 <% @books.each do |books| %>  
 <tr>
    <td><%= link_to books.id%></td>
@@ -29,12 +29,14 @@
    <td><%= link_to books.price%></td>
    <td><%= link_to books.description%></td>    
    <td><%= link_to books.author_name%></td>
-   <td><%= link_to  'View', book_path(books) %></td>
-   <td><%= link_to  'Edit', edit_book_path(books) %></td>
-   <td><%= link_to  'Remove', des_path(books), method: :delete, data: {confirm: "Are you sure"} %></td>
+   <td><%= link_to  'View', book_path(books) ,class:"btn btn-outline-success"%></td>
+   <td><%= link_to  'Edit', edit_book_path(books) ,class:"btn btn-outline-dark"%></td>
+   <td><%= link_to  'Remove', destroy_path(books), method: :delete,class:"btn btn-outline-danger" %></td>
 </tr>
 <% end%>
 </tbody>
 </table>
-<button type="button" class="btn btn-dark"> <%= link_to 'Back to Home',libraryl_path%></button>
+<%= link_to 'Back to Home',libraryl_path,class:"btn btn-secondary"%>
 <%end%>
+
+

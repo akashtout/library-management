@@ -1,4 +1,3 @@
-
 <h1 class="text-center text-success"><strong>Welcome to the library</strong></h1>
   <%if check_user%>
   <h1  class="text-primary">Student Details</h1>
@@ -19,9 +18,9 @@
   </tbody>
 </table>
 
-<button type="button" class="btn btn-dark"> <%= link_to 'Show Book',studentindex_path%></button>
-<button type="button"class="btn btn-dark"><%= link_to 'Borrow Books',borrowbook_path %></button>
-<button type="button"class="btn btn-dark"><%= link_to 'Requested Books',requestedbook_path%></button>
+<%= link_to 'Show Book',studentindex_path, class:"btn btn-dark"%>
+<%= link_to 'Borrow Books',borrowbook_path , class:"btn btn-dark"%>
+<%= link_to 'Requested Books',requestedbook_path, class:"btn btn-dark"%>
 
 
 
@@ -44,9 +43,12 @@
  </tr>
  </tbody>
 </table>
-<button type="button" class="btn btn-dark"> <%= link_to 'View Request Book', borrowshow_path %></button>
-<button type="button" class="btn btn-dark"> <%= link_to 'View Books', books_path %></button>
-<button type="button"class="btn btn-dark"><%= link_to 'Add new Book', new_book_path %></button>
-<button type="button"class="btn btn-dark"><%= link_to 'View issued Books', allstudent_path %></button>
-<button type="button" class="btn btn-dark"> <%= link_to 'View Return Book', returnb_path%></button>
+ <%= link_to 'View Request Book', borrowshow_path, class:"btn btn-outline-dark" %>
+ <%= link_to 'View Books', books_path, class:"btn btn-outline-dark"%>
+ <%= link_to 'Add new Book', new_book_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class:"btn btn-outline-dark"} %>
+<%= link_to 'View issued Books', allstudent_path, class:"btn btn-outline-dark" %>
+<%= link_to 'View Return Book', returnb_path, class:"btn btn-outline-dark"%>
 <% end %>
+
+
+

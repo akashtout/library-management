@@ -9,16 +9,16 @@
       <th>Cancel Request </th>
   </tr>
  </thead>
- <tbody>
  	  <% @requestedbook.each do |rb| %>
+ <tbody  id="cancel<%= rb.id %>">
   <tr>
      <td><%= rb.librarian_id%></td>
      <td><%= rb.book_id%></td>
  	   <td><%=rb.created_at.to_date%></td>
-     <td><%= link_to "Cancel ", borrow_path(rb.id), method: :delete %></td>
+     <td><%= link_to "Cancel ", borrow_path(rb), method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
   </tr>
-       <% end %>
  </tbody>
+       <% end %>
 </table>
-<button type="button" class="btn btn-dark"> <%= link_to 'Back',libraryl_path%></button>
+<%= link_to 'Back',libraryl_path,class:"btn btn-outline-dark"%>
 <%end%>

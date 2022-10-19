@@ -18,10 +18,10 @@
      <td><%= view.book_id%></td>
  	   <td><%=view.created_at.to_date%></td>
      <td><%=view.returndate%></td>
-     <td><%= link_to " Return",return_path(view.id), method: "patch" %></td>
+     <td><%= link_to " Return",return_path(view.id), method: "patch",class:"btn btn-outline-success" %></td>
   </tr>
        <% end %>
  </tbody>
 </table>
-<button type="button" class="btn btn-dark"> <%= link_to 'Back',libraryl_path%></button>
+<%= link_to 'Back',libraryl_path,class:"btn btn-dark"%>
 <%end%>

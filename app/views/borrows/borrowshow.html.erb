@@ -10,21 +10,22 @@
     <th>Reject Request</th>
   </tr>
   </thead>
-<tbody>
-
    <% @borrowshow.each do |borrowshow| %>
+<tbody  id="rejectrequest<%= borrowshow.id %>",id="accept">
+
    <tr>
+
      <td><%= borrowshow.librarian_id %></td>
      <td><%= borrowshow.book_id %></td>
      <td><%= borrowshow.student %></td>
-     <td><%= link_to "Accept", accept_path(borrowshow),method: :put %></td>
-      <td><%= link_to "Reject", reject_path(borrowshow.id),method: :delete %></td>
+     <td><%= link_to "Accept", accept_path(borrowshow),method: :put, remote: true ,class:"btn btn-outline-success"%></td>
+      <td><%= link_to "Reject", reject_path(borrowshow),method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
 
    </tr>
-   <%end%>
 </tbody>
+   <%end%>
 </table>
-<button type="button" class="btn btn-dark"> <%= link_to 'Back to Home',libraryl_path%></button>
+<%= link_to 'Back to Home',libraryl_path,class:"btn btn-dark"%>
 <%end%>
 
 

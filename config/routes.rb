@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-    delete '/books/:id' => 'books#destroy', as: 'des'
- resources :books
- resources :borrows
+    delete '/books/:id' => 'books#destroy', as: 'destroy'
   post '/borrowcreate' => 'borrows#create'
   get '/requestedbook' => 'borrows#requestedbook'
   get '/borrowbook' => 'borrows#borrowbook'
@@ -23,4 +21,6 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+ resources :books
+ resources :borrows
 end

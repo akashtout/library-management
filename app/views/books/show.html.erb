@@ -11,23 +11,23 @@
 <tbody>
 <tr>
    <td>
-    <%= @book.title %>
+    <%= @books.title %>
     </td>
     <td>
-    <%= @book.price %>
+    <%= @books.price %>
     </td>
      <td>
-    <%= @book.description %>
+    <%= @books.description %>
     </td>
      <td>
-    <%= @book.author_name %>
+    <%= @books.author_name %>
     </td>
 </tbody>
 </table>
 <%if check_user%>
-<button type="button" class="btn btn-dark"> <%= link_to 'Back to Home',studentindex_path%></button>
+<%= link_to 'Back to Home',studentindex_path,class:"btn btn-dark"%>
 <%else%>
-<button type="button" class="btn btn-dark"> <%= link_to 'Back to Home',books_path%></button>
+ <%= link_to 'Back to Home',books_path,class:"btn btn-dark"%>
 <%end%>
 
 
