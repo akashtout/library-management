@@ -1,5 +1,44 @@
 <h1 class="text-center text-success"><strong>Welcome to the library</strong></h1>
   <%if check_user%>
+
+<%= link_to 'Show Book',studentindex_path, class:"btn btn-outline-dark"%>
+<%= link_to 'Borrow Books',borrowbook_path , class:"btn btn-outline-dark"%>
+<%= link_to 'Requested Books',requestedbook_path, class:"btn btn-outline-dark"%>
+
+
+
+<% else %>
+
+ <%= link_to 'View Request Book', borrowshow_path, class:"btn btn-outline-dark" %>
+ <%= link_to 'View Books', books_path, class:"btn btn-outline-dark"%>
+ <%= link_to 'Add new Book', new_book_path, class:"btn btn-outline-dark" %>
+<%= link_to 'View issued Books', allstudent_path, class:"btn btn-outline-dark" %>
+<%= link_to 'View Return Book', returnb_path, class:"btn btn-outline-dark"%>
+<% end %>
+
+
+
+
+
+
+
+
+<%if current_librarian%>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Profile</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%if check_user%>
   <h1  class="text-primary">Student Details</h1>
 <table class="table table-bordered">
    <thead class="thead-dark">
@@ -17,11 +56,6 @@
    </tr>
   </tbody>
 </table>
-
-<%= link_to 'Show Book',studentindex_path, class:"btn btn-dark"%>
-<%= link_to 'Borrow Books',borrowbook_path , class:"btn btn-dark"%>
-<%= link_to 'Requested Books',requestedbook_path, class:"btn btn-dark"%>
-
 
 
 <% else %>
@@ -43,12 +77,17 @@
  </tr>
  </tbody>
 </table>
- <%= link_to 'View Request Book', borrowshow_path, class:"btn btn-outline-dark" %>
- <%= link_to 'View Books', books_path, class:"btn btn-outline-dark"%>
- <%= link_to 'Add new Book', new_book_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class:"btn btn-outline-dark"} %>
-<%= link_to 'View issued Books', allstudent_path, class:"btn btn-outline-dark" %>
-<%= link_to 'View Return Book', returnb_path, class:"btn btn-outline-dark"%>
+
 <% end %>
+      </div>
 
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
 
+    </div>
+  </div>
+</div>
 
+<%end%>

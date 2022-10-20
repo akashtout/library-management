@@ -5,12 +5,4 @@ class Librarian < ApplicationRecord
   validates :name,:email,:password_digest,:usertype, presence: true
   validates :email, uniqueness: true
 
-def self.search(search)
- if search 
-    librarians=Librarian.find_by(name: search)
-else
-    
-end
-
-end
 end

@@ -1,1 +1,68 @@
-<h1>this show of librarian</h1>
+<%if current_librarian%>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Profile</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%if check_user%>
+  <h1  class="text-primary">Student Details</h1>
+<table class="table table-bordered">
+   <thead class="thead-dark">
+   <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Usertype</th>
+   </tr>
+   </thead>
+  <tbody>
+   <tr>
+     <td><%= current_librarian.name %></td>
+     <td><%= current_librarian.email %></td>
+     <td><%= current_librarian.usertype %></td>
+   </tr>
+  </tbody>
+</table>
+
+
+<% else %>
+
+ <h1 class="text-primary">Librarian Details</h1>
+<table class="table table-bordered">
+ <thead class="thead-dark">
+   <tr>
+     <th>Name</th>
+     <th>Email</th>
+     <th>Usertype</th>
+   </tr>
+ </thead>
+ <tbody>
+ <tr>
+    <td><%= current_librarian.name %></td>
+    <td><%= current_librarian.email %></td>
+    <td><%= current_librarian.usertype %></td>
+ </tr>
+ </tbody>
+</table>
+
+<% end %>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<%end%>

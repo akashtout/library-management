@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete '/reject/:id' => 'borrows#reject', as: 'reject'
   put '/accept/:id' => 'borrows#accept', as: 'accept'
 
+  get '/show' => 'librarians#show'
   get '/studentindex' => 'books#studentindex'
   root "librarians#index"
   get '/libraryl' => 'librarians#libraryl'
