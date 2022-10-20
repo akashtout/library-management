@@ -1,5 +1,26 @@
 <%if current_librarian%>
 <h1 class="text-center text-primary"  ><strong>Add new Book</strong></h1>
-<div class="text-center text-dark"><%= render partial: "form" %></div>
+
+<div class="login">
+<div class="container">
+<div class="form">
+<%= form_for(@books) do |f| %>
+ <%= label_tag 'title'%><br>  
+ <%= f.text_field :title, :placeholder => "title" %><br>
+ <%= label_tag 'price'%><br>
+ <%= f.number_field :price, :placeholder => "price" %><br>
+ <%= label_tag 'Description'%><br>
+ <%= f.text_field :description, :placeholder => "Description" %><br>
+ <%= label_tag 'Author id'%><br>
+ <%= f.number_field :author_id, :placeholder => "author_id" %><br>
+ <%= label_tag 'Author'%><br>
+ <%= f.text_field :author_name, :placeholder => "Author" %><br>
+ <%= f.submit "Create Book", class: "btn btn-outline-success" %>   
+<% end %>
+</div>
+</div>
+</div>
+
+
 <%= link_to 'Back to Home',libraryl_path, class: "btn btn-outline-dark" %>
 <%end%>

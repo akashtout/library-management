@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/show' => 'librarians#show'
   get '/studentindex' => 'books#studentindex'
   root "librarians#index"
+  get '/viewprofile' => 'librarians#viewprofile'
   get '/libraryl' => 'librarians#libraryl'
   get '/index' => 'librarians#index'
   get '/signup' => 'librarians#new'

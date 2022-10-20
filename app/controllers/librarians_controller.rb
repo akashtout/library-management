@@ -31,6 +31,10 @@ def create
    end
 end
 
+def viewprofile
+   
+end
+
 def libraryl
 end
 
