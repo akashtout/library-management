@@ -1,27 +1,26 @@
- <%if current_librarian%>
- <h1 class="text-primary">Borrowed Book</h1>
-<table class="table table-bordered">
- <thead class="thead-dark">
-   <tr>
+ <%if current_librarian %>
+   <h1 class="text-primary">Borrowed Book</h1>
+   <table class="table table-bordered">
+   <thead class="thead-dark">
+     <tr>
    	 <th>Student Id</th>
      <th>book Id</th>
      <th>Borrowed Date </th>
      <th>Return Date </th>
      <th>Return Book</th>
-    
-  </tr>
- </thead>
- <tbody>
- 	  <% @borrowbook.each do |view| %>
-  <tr>
+     </tr>
+   </thead>
+   <tbody>
+ 	<% @borrowbook.each do |view| %>
+     <tr>
      <td><%= view.librarian_id%></td>
      <td><%= view.book_id%></td>
  	   <td><%=view.created_at.to_date%></td>
      <td><%=view.returndate%></td>
      <td><%= link_to " Return",return_path(view.id), method: "patch",class:"btn btn-outline-success" %></td>
-  </tr>
-       <% end %>
- </tbody>
-</table>
-<%= link_to 'Back',libraryl_path,class:"btn btn-outline-dark"%>
-<%end%>
+     </tr>
+ <% end %>
+  </tbody>
+  </table>
+<%= link_to 'Back',libraryindex_path,class:"btn btn-outline-dark" %>
+<% end %>

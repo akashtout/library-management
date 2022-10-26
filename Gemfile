@@ -5,6 +5,7 @@ ruby '2.7.2'
 
 gem 'bootstrap-sass'
 gem 'bootstrap'
+gem 'popper_js', '~> 2.11', '>= 2.11.6'
 gem 'bcrypt'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'

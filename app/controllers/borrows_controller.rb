@@ -1,36 +1,36 @@
 class BorrowsController < ApplicationController
   def index
-      @borrow = Borrow.all
+    @borrow = Borrow.all
   end
 
   def new
-     @borrow = Borrow.new
+    @borrow = Borrow.new
   end
 
- def create
- 	@borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
- 		 student: current_librarian.name, status: false, returndate: "2023-01-30".to_date)
+  def create
+ 	  @borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
+ 		student: current_librarian.name, status: false, returndate: "2023-01-30".to_date)
     if @borrow.save
       respond_to do |format|
         format.html {redirect_to studentindex_path}
         format.js
-      end
-
-     else
     end
- end
+
+    else
+    end
+  end
 
   def show
  	  @borrow=Borrow.find(params[:id])
   end
 
- def requestedbook
+  def requestedbook
     @requestedbook=Borrow.where({ student: current_librarian.name, status: "false" })
- end
+  end
 
-def borrowbook
- @borrowbook=Borrow.where({ student: current_librarian.name, status: "true" })
-end
+  def borrowbook
+    @borrowbook=Borrow.where({ student: current_librarian.name, status: "true" })
+  end
 
 
   def borrowshow
@@ -42,8 +42,9 @@ end
   end
 
 
-   def update
-   end
+  def update
+  
+  end
 
   def accept
     @borrow=Borrow.find(params[:id])
@@ -63,6 +64,7 @@ end
 
 
   def edit
+  
   end
 
   def destroy
@@ -82,11 +84,11 @@ end
   end
 
   private
-   def borrow_params
+    def borrow_params
       params.require(:borrow).permit(:librarian_id, :book_id, :student, :returndate, :status)
-   end
+    end
 
-end
+  end
 
 
 

@@ -1,25 +1,24 @@
  <%if current_librarian%>
- <h1 class="text-primary">Requested Books</h1>
-<table class="table table-bordered">
- <thead >
-   <tr>
+     <h1 class="text-primary">Requested Books</h1>
+     <table class="table table-bordered">
+     <thead >
+     <tr>
    	 <th> Student Id </th>
      <th> book Id </th>
      <th> Date </th>
-      <th>Cancel Request </th>
-  </tr>
- </thead>
- <tbody>
- 	  <% @requestedbook.each do |rb| %>
-  <tr id="cancel<%= rb.id %>">
+     <th>Cancel Request </th>
+     </tr>
+     </thead>
+     <tbody>
+ <% @requestedbook.each do |rb| %>
+     <tr id="cancel<%= rb.id %>">
      <td><%= rb.librarian_id%></td>
      <td><%= rb.book_id%></td>
  	   <td><%=rb.created_at.to_date%></td>
      <td><%= link_to "Cancel ", borrow_path(rb), method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
-
-  </tr>
- </tbody>
-       <% end %>
-</table>
-<%= link_to 'Back',libraryl_path,class:"btn btn-outline-dark"%>
-<%end%>
+     </tr>
+     </tbody>
+ <% end %>
+     </table>
+<%= link_to 'Back',libraryindex_path,class:"btn btn-outline-dark"%>
+<% end %>

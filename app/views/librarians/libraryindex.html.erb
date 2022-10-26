@@ -1,0 +1,77 @@
+<%if current_librarian%>
+
+  <%= link_to "Add new book", new_book_path,class:"btn btn-outline-dark",data:{'data-bs-toggle' => "modal",'data-bs-target' =>"#myModal",remote:true}%>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+        <!--  Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!--  body -->
+          <div id='post-content'>
+
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="text-center text-success"><strong>Welcome to the library</strong></h1>
+    <%if check_user%>
+      <h1  class="text-primary">Student Details</h1>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Usertype</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= current_librarian.name %></td>
+            <td><%= current_librarian.email %></td>
+            <td><%= current_librarian.usertype %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to 'Show Book',studentindex_path, class:"btn btn-dark"%>
+      <%= link_to 'Borrow Books',borrowbook_path , class:"btn btn-dark"%>
+      <%= link_to 'Requested Books',requestedbook_path, class:"btn btn-dark"%>
+
+    <% else %>
+    <h1 class="text-primary">Librarian Details</h1>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Usertype</th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr>
+        <td><%= current_librarian.name %></td>
+        <td><%= current_librarian.email %></td>
+        <td><%= current_librarian.usertype %></td>
+      </tr>
+    </tbody>
+    </table>
+    <%= link_to 'View Request Book', borrowshow_path, class:"btn btn-outline-dark" %>
+    <%= link_to 'View Books', books_path, class:"btn btn-outline-dark"%>
+    <%= link_to 'View issued Books', allstudent_path, class:"btn btn-outline-dark" %>
+    <%= link_to 'View Return Book', returnb_path, class:"btn btn-outline-dark"%>
+
+  <% end %>
+<% end %>
+
+

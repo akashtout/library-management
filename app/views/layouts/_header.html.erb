@@ -1,117 +1,93 @@
-
 <!DOCTYPE html>
-<html>
+  <html>
   <head>
-     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>libraryapp</title>
-    <nav class="navbar navbar-dark bg-dark ">
-    
-    <a class="navbar-brand  " href="">Library Management System</a>
-    <%if current_librarian %>
-
-<!-- The Modal -->
-<div class="modal" id="myModal">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>libraryapp</title>
+  <nav class="navbar navbar-dark bg-dark ">
+  <a class="navbar-brand  " href="">Library Management System</a>
+<%if current_librarian %>
+  <div class="modal" id="newmodal1">
   <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-content">
 
       <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">profile</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
+  <div class="modal-header"></div>
 
       <!-- Modal body -->
-      <div class="modal-body">
-       <%if check_user%>
+  <div class="modal-body" >
+<%if check_user%>
   <h1  class="text-primary">Student Details</h1>
-<table class="table table-bordered">
-   <thead class="thead-dark">
-   <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Usertype</th>
-   </tr>
-   </thead>
+  <table class="table table-bordered">
+  <thead class="thead-dark">
+  <tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Usertype</th>
+  </tr>
+  </thead>
   <tbody>
-   <tr>
-     <td><%= current_librarian.name %></td>
-     <td><%= current_librarian.email %></td>
-     <td><%= current_librarian.usertype %></td>
-   </tr>
+  <tr>
+  <td><%= current_librarian.name %></td>
+  <td><%= current_librarian.email %></td>
+  <td><%= current_librarian.usertype %></td>
+  </tr>
   </tbody>
-</table>
-
+  </table>
 <% else %>
-
- <h1 class="text-primary">Librarian Details</h1>
-<table class="table table-bordered">
- <thead class="thead-dark">
-   <tr>
-     <th>Name</th>
-     <th>Email</th>
-     <th>Usertype</th>
-   </tr>
- </thead>
- <tbody>
- <tr>
-    <td><%= current_librarian.name %></td>
-    <td><%= current_librarian.email %></td>
-    <td><%= current_librarian.usertype %></td>
- </tr>
- </tbody>
-</table>
-
+  <h1 class="text-primary">Librarian Details</h1>
+  <table class="table table-bordered">
+  <thead class="thead-dark">
+  <tr>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Usertype</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><%= current_librarian.name %></td>
+  <td><%= current_librarian.email %></td>
+  <td><%= current_librarian.usertype %></td>
+  </tr>
+  </tbody>
+  </table>
 <% end %>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-
-    </div>
   </div>
-</div>
-
-    <div class="dropdown">
+      <!-- Modal footer -->
+  <div class="modal-footer">
+  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="dropdown">
   <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown
+    About
   </button>
   <ul class="dropdown-menu">
-    <button type="button" class="btn btn-secondary dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal">
+    <button type="button" class="btn btn-secondary dropdown-item" data-bs-toggle="modal" data-bs-target="#newmodal1">
   View Profile
-</button>
-    <%= link_to 'Logout', logout_path, class:"btn btn-outline-dark   dropdown-item" %>
-   
+  </button>
   </ul>
-</div>
-   <a  class="navbar-brand  " href="/libraryl">Home</a>
-   <a  class="navbar-brand  pull-right" href="/logout">Logout</a>
-  <% else %>
-   <a  class="navbar-brand  pull-right" href="/signup">signup</a>
-    <a  class="navbar-brand  pull-right" href="/login">Login</a>
- 
-
- <%end%>
-</nav>
-
-
-</head>
+  </div>
+  <a  class="navbar-brand  " href="/libraryindex">Home</a>
+  <a  class="navbar-brand  pull-right" href="/logout">Logout</a>
+<% else %>
+  <a  class="navbar-brand  pull-right" href="/signup">signup</a>
+  <a  class="navbar-brand  pull-right" href="/login">Login</a>
+<% end %>
+  </nav>
+  </head>
   <body>
-
 <% flash.each do |type, msg| %>
   <div>
-    <%= msg %>
+<%= msg %>
   </div>
 <% end %>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-
- </body>
-</html>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+  </html>
 
 
 

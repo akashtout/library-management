@@ -1,64 +1,63 @@
 class BooksController < ApplicationController
-   def index
-       if params[:search_key]
-      @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
-      "%#{params[:search_key]}%", "%#{params[:search_key]}%")
-    else
+  def index
+      if params[:search_key]
+       @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
+       "%#{params[:search_key]}%", "%#{params[:search_key]}%")
+      else
       @books = Book.all
-    end
-   end
+      end
+  end
 
-   def studentindex
-    @books = Book.all
-
+  def studentindex
+     @book = Book.all
   end
   
+  def modal
+  end
+
   def new
-     @books = Book.new
-   respond_to do |format|
-    format.html
-    format.js
-   end
+     @book = Book.new
+     respond_to do |format|
+       format.html
+       format.js
+     end
   end
 
   def create
-    @books = Book.new(book_params)
-    if @books.save
-      flash[:notice] = "You have successfully created"
-    
-      redirect_to libraryl_path
-         else
-      render :new
-    end
-
+     @book = Book.new(book_params)
+     if @book.save
+        flash[:notice] = "You have successfully created"
+        redirect_to libraryindex_path
+     else
+        render :new
+     end
   end
 
   def show
-    @books = Book.find(params[:id])
+     @book = Book.find(params[:id])
   end
 
   def edit
-    @books = Book.find(params[:id])
+     @book = Book.find(params[:id])
   end
 
   def destroy
-    @books = Book.find(params[:id])
-    @books.destroy
+     @book = Book.find(params[:id])
+     @book.destroy
       respond_to do |format|
-        format.html {redirect_to books_path}
+        format.html {redirect_to libraryindex_path}
         format.js
       end
   end
 
   def update
-    @book = Book.find(params[:id])
-    if @book.update(book_params)
-      redirect_to @book
-    else
-      render :edit
-    end
-
-end
+     @book = Book.find(params[:id])
+     if @book.update(book_params)
+       redirect_to @book
+     else
+       render :edit
+     end
+  end
 
   private
     def book_params

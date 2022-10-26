@@ -1,6 +1,6 @@
-<%if current_librarian%>
-<h1 class="text-success">Availabe Books</h1>
-<table class="table table-bordered">
+<%if current_librarian %>
+ <h1 class="text-success">Availabe Books</h1>
+ <table class="table table-bordered">
   <thead  class="thead-dark">
   <tr>
     <th>Id No.</th>
@@ -12,9 +12,9 @@
     <th>Request Book</th>
   </tr>
   </thead>
-<tbody  id="request">
-<% @books.each do |book| %>  
-<tr>
+ <tbody  id="request">
+<% @book.each do |book| %>  
+   <tr>
    <td><%= link_to book.id%></td>
    <td><%= link_to book.title %></td>
    <td><%= link_to book.price%></td>
@@ -24,12 +24,13 @@
    <td> 
      <%= form_tag borrowcreate_path, method: :post , remote: true do %>
      <%= hidden_field_tag :book_id, book.id %>
+     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
      <%= submit_tag "Request Book",:class => "btn btn btn-sm ",class:"btn btn-outline-success" %>
       <% end %>
    </td>
- </tr>
-<% end%>
-</tbody>
-</table>
- <%= link_to 'Back to Home',libraryl_path,class:"btn btn-outline-dark" %> 
-<%end%>
+   </tr>
+<% end %>
+   </tbody>
+   </table>
+ <%= link_to 'Back to Home',libraryindex_path,class:"btn btn-outline-dark" %> 
+<% end %>
