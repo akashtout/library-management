@@ -5,76 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>libraryapp</title>
   <nav class="navbar navbar-dark bg-dark ">
-  <a class="navbar-brand  " href="">Library Management System</a>
+  <div>
+    <a class="navbar-brand  " href="">Library Management System</a>
+    <a class="navbar-brand  " href="/home">Home</a>
+  </div>
 <%if current_librarian %>
-  <div class="modal" id="newmodal1">
+ 
+
+<div class="modal" id="myModal">
   <div class="modal-dialog">
-  <div class="modal-content">
+    <div class="modal-content">
 
-      <!-- Modal Header -->
-  <div class="modal-header"></div>
+    <!--  Header -->
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
 
-      <!-- Modal body -->
-  <div class="modal-body" >
-<%if check_user%>
-  <h1  class="text-primary">Student Details</h1>
-  <table class="table table-bordered">
-  <thead class="thead-dark">
-  <tr>
-  <th>Name</th>
-  <th>Email</th>
-  <th>Usertype</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><%= current_librarian.name %></td>
-  <td><%= current_librarian.email %></td>
-  <td><%= current_librarian.usertype %></td>
-  </tr>
-  </tbody>
-  </table>
-<% else %>
-  <h1 class="text-primary">Librarian Details</h1>
-  <table class="table table-bordered">
-  <thead class="thead-dark">
-  <tr>
-  <th>Name</th>
-  <th>Email</th>
-  <th>Usertype</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><%= current_librarian.name %></td>
-  <td><%= current_librarian.email %></td>
-  <td><%= current_librarian.usertype %></td>
-  </tr>
-  </tbody>
-  </table>
-<% end %>
+         <!--  body -->
+         <div class="modal-content" id='modal_content'></div>
+         <!-- Modal footer -->
+         <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
   </div>
-      <!-- Modal footer -->
-  <div class="modal-footer">
-  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-  </div>
-  </div>
-  </div>
-  </div>
+</div>
+
+
   <div class="dropdown">
   <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     About
   </button>
   <ul class="dropdown-menu">
     <button type="button" class="btn btn-secondary dropdown-item" data-bs-toggle="modal" data-bs-target="#newmodal1">
-  View Profile
+  View 
   </button>
+
   </ul>
   </div>
-  <a  class="navbar-brand  " href="/libraryindex">Home</a>
+  <div>
   <a  class="navbar-brand  pull-right" href="/logout">Logout</a>
+  <%= link_to "View profile", viewprofile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
+  </div>
 <% else %>
-  <a  class="navbar-brand  pull-right" href="/signup">signup</a>
+  <a  class="navbar-brand  pull-" href="/signup">signup</a>
   <a  class="navbar-brand  pull-right" href="/login">Login</a>
 <% end %>
   </nav>

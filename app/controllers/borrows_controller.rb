@@ -12,7 +12,7 @@ class BorrowsController < ApplicationController
  		student: current_librarian.name, status: false, returndate: "2023-01-30".to_date)
     if @borrow.save
       respond_to do |format|
-        format.html {redirect_to studentindex_path}
+        format.html {redirect_to home_path}
         format.js
     end
 
@@ -39,6 +39,10 @@ class BorrowsController < ApplicationController
 
   def showreturnbook
 	  @showreturnbook=Borrow.where(status: nil)
+    respond_to do |format|
+       format.html
+       format.js
+     end
   end
 
 

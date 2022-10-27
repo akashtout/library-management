@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
   def index
       if params[:search_key]
-       @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
-       "%#{params[:search_key]}%", "%#{params[:search_key]}%")
+        @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
+        "%#{params[:search_key]}%", "%#{params[:search_key]}%")
       else
-      @books = Book.all
+        @books = Book.all
       end
   end
 
@@ -12,7 +12,7 @@ class BooksController < ApplicationController
      @book = Book.all
   end
   
-  def modal
+  def home
   end
 
   def new
@@ -27,7 +27,7 @@ class BooksController < ApplicationController
      @book = Book.new(book_params)
      if @book.save
         flash[:notice] = "You have successfully created"
-        redirect_to libraryindex_path
+        redirect_to home_path
      else
         render :new
      end
@@ -45,7 +45,7 @@ class BooksController < ApplicationController
      @book = Book.find(params[:id])
      @book.destroy
       respond_to do |format|
-        format.html {redirect_to libraryindex_path}
+        format.html {redirect_to home_path}
         format.js
       end
   end

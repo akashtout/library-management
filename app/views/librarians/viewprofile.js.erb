@@ -1,2 +1,2 @@
-/*$("#Mymodal").find(".modal-content").html("<%= j (render 'viewprofile') %>");
-$("#Mymodal").modal();*/
+$("#modal_content").html("<%= j render 'viewprofile', librarian: @librarian %>");
+$("#myModal").modal('show');

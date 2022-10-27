@@ -3,7 +3,6 @@ class LibrariansController < ApplicationController
     @librarian = Librarian.all
   end
 
-
   def home
     @librarian = Librarian.all  
   end
@@ -21,10 +20,7 @@ class LibrariansController < ApplicationController
      end
   end
 
-
-
   def show  
-  
   end
 
   def create
@@ -38,7 +34,10 @@ class LibrariansController < ApplicationController
   end
 
   def viewprofile
-   
+   respond_to do |format|
+       format.html
+       format.js
+     end
   end
 
   def libraryindex

@@ -11,8 +11,9 @@ Rails.application.routes.draw do
     put '/accept/:id' => 'borrows#accept', as: 'accept'
 
     get '/show' => 'librarians#show'
-    get '/modal' => 'books#modal'
+    get '/home' => 'books#home'
     get '/studentindex' => 'books#studentindex'
+    
     get '/home' => 'librarians#home'
     root "librarians#home"
     get '/viewprofile' => 'librarians#viewprofile'

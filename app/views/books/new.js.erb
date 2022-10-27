@@ -1,1 +1,2 @@
-$("#myModal").show();
+$("#modal_content").html("<%= j render 'new', book: @book %>");
+$("#myModal").modal('show');
