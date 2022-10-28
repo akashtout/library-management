@@ -7,7 +7,6 @@
   <nav class="navbar navbar-dark bg-dark ">
   <div>
     <a class="navbar-brand  " href="">Library Management System</a>
-    <a class="navbar-brand  " href="/home">Home</a>
   </div>
 <%if current_librarian %>
  
@@ -32,19 +31,7 @@
   </div>
 </div>
 
-
-  <div class="dropdown">
-  <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    About
-  </button>
-  <ul class="dropdown-menu">
-    <button type="button" class="btn btn-secondary dropdown-item" data-bs-toggle="modal" data-bs-target="#newmodal1">
-  View 
-  </button>
-
-  </ul>
-  </div>
-  <div>
+    <a class="navbar-brand  " href="/home">Home</a>
   <a  class="navbar-brand  pull-right" href="/logout">Logout</a>
   <%= link_to "View profile", viewprofile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
   </div>

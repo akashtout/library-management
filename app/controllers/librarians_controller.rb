@@ -11,12 +11,12 @@ class LibrariansController < ApplicationController
     @librarian = Librarian.new
   end
 
-  def allstudent
+  def history
      if params[:search_key]
-       @allstudent = Borrow.where("librarian_id LIKE ? OR student LIKE ? ", 
+       @history = Borrow.where("librarian_id LIKE ? OR student LIKE ? ", 
        "%#{params[:search_key]}%", "%#{params[:search_key]}%")
      else
-        @allstudent=Borrow.where(status:'true')
+        @history=Borrow.where(status:'true')
      end
   end
 

@@ -8,14 +8,13 @@ class BorrowsController < ApplicationController
   end
 
   def create
- 	  @borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
+    @borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
  		student: current_librarian.name, status: false, returndate: "2023-01-30".to_date)
     if @borrow.save
       respond_to do |format|
         format.html {redirect_to home_path}
         format.js
     end
-
     else
     end
   end
@@ -25,13 +24,12 @@ class BorrowsController < ApplicationController
   end
 
   def requestedbook
-    @requestedbook=Borrow.where({ student: current_librarian.name, status: "false" })
+    @requestedbook=Borrow.where({ student: current_librarian.name, status: "false" }) | Borrow.where({ student: current_librarian.name, status: "true" })
   end
 
   def borrowbook
     @borrowbook=Borrow.where({ student: current_librarian.name, status: "true" })
   end
-
 
   def borrowshow
     @borrowshow = Borrow.where(status: "false")
@@ -42,12 +40,10 @@ class BorrowsController < ApplicationController
     respond_to do |format|
        format.html
        format.js
-     end
+    end
   end
 
-
   def update
-  
   end
 
   def accept
@@ -55,6 +51,14 @@ class BorrowsController < ApplicationController
     @borrow.update(status: true)
       respond_to do |format|
         format.html {redirect_to borrowshow_path}
+        format.js
+      end
+  end
+
+  def reject
+    @borrow = Borrow.find(params[:id])
+    @borrow.destroy
+      respond_to do |format|
         format.js
       end
   end
@@ -68,7 +72,6 @@ class BorrowsController < ApplicationController
 
 
   def edit
-  
   end
 
   def destroy
@@ -76,14 +79,6 @@ class BorrowsController < ApplicationController
     @borrow.destroy
       respond_to do |format|
        format.js
-      end
-  end
-
-  def reject
-    @borrow = Borrow.find(params[:id])
-    @borrow.destroy
-      respond_to do |format|
-        format.js
       end
   end
 

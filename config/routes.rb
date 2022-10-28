@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get '/index' => 'librarians#index'
     get '/signup' => 'librarians#new'
     post '/librarians' => 'librarians#create'
-    get '/allstudent' => 'librarians#allstudent'
+    get '/history' => 'librarians#history'
 
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'

@@ -1,7 +1,7 @@
  <%if current_librarian%>
 
 <div class="pull-right">
-<form action="<%= allstudent_path %>">
+<form action="<%= history_path %>">
   <input type="text" placeholder="    Search here" name="search_key">
   <button type="submit">Search</button>
 </form>
@@ -19,7 +19,7 @@
         </tr>
  </thead>
  <tbody>
- 	  <% @allstudent.each do |view| %>
+ 	  <% @history.each do |view| %>
   <tr>
  	   <td><%= view.librarian_id %></td>
      <td><%= view.book_id%></td>

@@ -1,36 +1,30 @@
 <%if current_librarian %>
- <h1 class="text-success">Availabe Books</h1>
- <table class="table table-bordered">
-  <thead  class="thead-dark">
-  <tr>
-    <th>Id No.</th>
-    <th>Title</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Author</th>
-    <th>View</th>
-    <th>Request Book</th>
-  </tr>
-  </thead>
- <tbody  id="request">
+  <h1 class="text-success">Availabe Books</h1>
+  <table class="table table-bordered">
+   <thead  class="thead-dark">
+    <tr>
+     <th id="abc">Id No.</th>
+     <th>Title</th>
+     <th>Price</th>
+     <th>Description</th>
+     <th>Author</th>
+     <th>View</th>
+     <th>Request Book</th>
+    </tr>
+   </thead>
+  <tbody  id="request">
 <% @book.each do |book| %>  
    <tr>
-   <td><%= link_to book.id%></td>
-   <td><%= link_to book.title %></td>
-   <td><%= link_to book.price%></td>
-   <td><%= link_to book.description%></td>    
-   <td><%= link_to book.author_name%></td>
-   <td><%= link_to  'View', book_path(book) ,class:"btn btn-outline-info"%></td>
-   <td> 
-     <%= form_tag borrowcreate_path, method: :post , remote: true do %>
-     <%= hidden_field_tag :book_id, book.id %>
-     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-     <%= submit_tag "Request Book",:class => "btn btn btn-sm ",class:"btn btn-outline-success" %>
-      <% end %>
-   </td>
+     <td><%= link_to book.id%></td>
+     <td><%= link_to book.title %></td>
+     <td><%= link_to book.price%></td>
+     <td><%= link_to book.description%></td>    
+     <td><%= link_to book.author_name%></td>
+     <td><%= link_to  'View', book_path(book) ,class:"btn btn-outline-info"%></td>
+     <td  id="book_<%=book.id%>" ><%= button_to "Request Book", borrowcreate_path(book_id: book.id), remote: true, method: :post,class:"btn btn-outline-success"%></td>
    </tr>
 <% end %>
-   </tbody>
-   </table>
- <%= link_to 'Back to Home',home_path,class:"btn btn-outline-dark" %> 
+  </tbody>
+  </table>
+  <%= link_to 'Back to Home',home_path,class:"btn btn-outline-dark" %> 
 <% end %>

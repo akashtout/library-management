@@ -6,7 +6,8 @@
    	 <th> Student Id </th>
      <th> book Id </th>
      <th> Date </th>
-     <th>Cancel Request </th>
+ 
+     <th>status</th>
      </tr>
      </thead>
      <tbody>
@@ -14,9 +15,16 @@
      <tr id="cancel<%= rb.id %>">
      <td><%= rb.librarian_id%></td>
      <td><%= rb.book_id%></td>
- 	   <td><%=rb.created_at.to_date%></td>
-     <td><%= link_to "Cancel ", borrow_path(rb), method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
-     </tr>
+ 	 <td><%=rb.created_at.to_date%></td>
+
+      <% if rb.status == false %>
+      <td><%= 'pending' %></td>
+      <% elsif rb.status== true %>
+    <td><%= "Approved" %></td>
+      <% else rb.status == nil %>
+      <td><%= "Rejected" %></td>
+      <% end %>
+
      </tbody>
  <% end %>
      </table>
