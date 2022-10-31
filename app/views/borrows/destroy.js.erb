@@ -1,2 +1,2 @@
-   let delete<%= @borrow.id %> = document.querySelector("#cancel" + <%= @borrow.id %>);
-   delete<%= @borrow.id %>.remove();
+
+$('#book_<%=@borrow.book_id%>').replaceWith( '<%= escape_javascript render(partial: "requestbook") %>');

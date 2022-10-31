@@ -1,0 +1,3 @@
+
+$("#book_<%=@borrow.book_id%>").replaceWith(" <td ><%= button_to "Request Book", borrowcreate_path(), remote: true, method: :post,class:"btn btn-outline-success" %></td>
+");

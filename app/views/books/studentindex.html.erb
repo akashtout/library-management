@@ -12,16 +12,16 @@
      <th>Request Book</th>
     </tr>
    </thead>
-  <tbody  id="request">
+  <tbody   id="request"   id="destroy">
 <% @book.each do |book| %>  
-   <tr>
+   <tr  id="replaced">
      <td><%= link_to book.id%></td>
      <td><%= link_to book.title %></td>
      <td><%= link_to book.price%></td>
      <td><%= link_to book.description%></td>    
      <td><%= link_to book.author_name%></td>
      <td><%= link_to  'View', book_path(book) ,class:"btn btn-outline-info"%></td>
-     <td  id="book_<%=book.id%>" ><%= button_to "Request Book", borrowcreate_path(book_id: book.id), remote: true, method: :post,class:"btn btn-outline-success"%></td>
+     <td  id="book_<%=book.id%>" ><%= button_to "Request Book", borrowcreate_path(book_id: book.id), remote: true, method: :post,class:"btn btn-outline-success" %></td>
    </tr>
 <% end %>
   </tbody>

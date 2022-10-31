@@ -12,8 +12,8 @@ class BorrowsController < ApplicationController
  		student: current_librarian.name, status: false, returndate: "2023-01-30".to_date)
     if @borrow.save
       respond_to do |format|
-        format.html {redirect_to home_path}
-        format.js
+       format.html 
+      format.js 
     end
     else
     end
@@ -78,7 +78,7 @@ class BorrowsController < ApplicationController
     @borrow = Borrow.find(params[:id])
     @borrow.destroy
       respond_to do |format|
-       format.js
+       format.js 
       end
   end
 

@@ -1,1 +1,2 @@
-$('#book_<%=@borrow.book_id%>').html('requested');
+$('#book_<%=@borrow.book_id%>').html( '<%= escape_javascript render(partial: "requested") %>');
+
