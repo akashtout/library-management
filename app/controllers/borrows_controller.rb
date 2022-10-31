@@ -51,7 +51,7 @@ class BorrowsController < ApplicationController
     @borrow.update(status: true)
       respond_to do |format|
         format.html {redirect_to borrowshow_path}
-        format.js
+        format.js  {redirect_to borrowshow_path}
       end
   end
 
