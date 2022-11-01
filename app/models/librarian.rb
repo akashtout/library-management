@@ -4,5 +4,4 @@ class Librarian < ApplicationRecord
   has_many :borrows
   validates :name,:email,:password_digest,:usertype, presence: true
   validates :email, uniqueness: true
-
 end

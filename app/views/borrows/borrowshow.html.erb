@@ -1,23 +1,23 @@
- <%if current_librarian%>
+ <%if current_user%>
     <h1  class="text-success"><strong>Details Of request book from Student</strong></h1>
     <table class="table table-bordered">
     <thead class="thead-dark">
     <tr>
-    <th>Student Id</th>
-    <th>book_id</th>
-    <th>Student Name</th>
-    <th>Accept Request</th>
-    <th>Reject Request</th>
+      <th>Student Id</th>
+      <th>book_id</th>
+      <th>Student Name</th>
+      <th>Accept Request</th>
+      <th>Reject Request</th>
     </tr>
     </thead>
  <% @borrowshow.each do |borrowshow| %>
     <tbody  id="rejectrequest<%= borrowshow.id %>",id="accept">
     <tr>
-    <td><%= borrowshow.librarian_id %></td>
-    <td><%= borrowshow.book_id %></td>
-    <td><%= borrowshow.student %></td>
-    <td><%= link_to "Accept", accept_path(borrowshow),method: :put, remote: true ,class:"btn btn-outline-success"%></td>
-    <td><%= link_to "Reject", reject_path(borrowshow),method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
+      <td><%= borrowshow.librarian_id %></td>
+      <td><%= borrowshow.book_id %></td>
+      <td><%= borrowshow.student %></td>
+      <td><%= link_to "Accept", accept_path(borrowshow),method: :put, remote: true ,class:"btn btn-outline-success"%></td>
+      <td><%= link_to "Reject", reject_path(borrowshow),method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
     </tr>
     </tbody>
  <% end %>

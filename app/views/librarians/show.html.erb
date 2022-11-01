@@ -1,6 +1,6 @@
-        <%if check_user%>
+<%if check_user%>
   <h1  class="text-primary">Student Details</h1>
-<table class="table table-bordered">
+ <table class="table table-bordered">
    <thead class="thead-dark">
    <tr>
     <th>Name</th>
@@ -10,12 +10,12 @@
    </thead>
   <tbody>
    <tr>
-     <td><%= current_librarian.name %></td>
-     <td><%= current_librarian.email %></td>
-     <td><%= current_librarian.usertype %></td>
+     <td><%= current_user.name %></td>
+     <td><%= current_user.email %></td>
+     <td><%= current_user.usertype %></td>
    </tr>
   </tbody>
-</table>
+ </table>
 
 
 <% else %>
@@ -31,9 +31,9 @@
  </thead>
  <tbody>
  <tr>
-    <td><%= current_librarian.name %></td>
-    <td><%= current_librarian.email %></td>
-    <td><%= current_librarian.usertype %></td>
+    <td><%= current_user.name %></td>
+    <td><%= current_user.email %></td>
+    <td><%= current_user.usertype %></td>
  </tr>
  </tbody>
 </table>

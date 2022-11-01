@@ -1,29 +1,26 @@
- <%if current_librarian%>
+ <%if current_user%>
      <h1 class="text-primary">Requested Books</h1>
      <table class="table table-bordered">
      <thead >
      <tr>
-   	 <th> Student Id </th>
-     <th> book Id </th>
-     <th> Date </th>
- 
-     <th>status</th>
+   	   <th> Student Id </th>
+       <th> book Id </th>
+       <th> Date </th>
+       <th>status</th>
      </tr>
      </thead>
      <tbody>
  <% @requestedbook.each do |rb| %>
      <tr id="cancel<%= rb.id %>">
-     <td><%= rb.librarian_id%></td>
-     <td><%= rb.book_id%></td>
- 	 <td><%=rb.created_at.to_date%></td>
+       <td><%= rb.librarian_id%></td>
+       <td><%= rb.book_id%></td>
+ 	   <td><%=rb.created_at.to_date%></td>
 
-      <% if rb.status == false %>
-      <td><%= 'pending' %></td>
-      <% elsif rb.status== true %>
-    <td><%= "Approved" %></td>
-      <% else rb.status == nil %>
-      <td><%= "Rejected" %></td>
-      <% end %>
+       <% if rb.status == true %>
+       <td><%= 'Approved' %></td>
+       <% else rb.status == false %>
+       <td><%= "Pending" %></td>
+       <% end %>
 
      </tbody>
  <% end %>

@@ -14,8 +14,10 @@ Rails.application.routes.draw do
     get '/home' => 'books#home'
     get '/studentindex' => 'books#studentindex'
     
-    get '/home' => 'librarians#home'
-    root "librarians#home"
+    get '/librarianhome' => 'librarians#librarianhome'
+    
+    root "librarians#librarianhome"
+
     get '/viewprofile' => 'librarians#viewprofile'
     get '/libraryindex' => 'librarians#libraryindex'
     get '/index' => 'librarians#index'
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
     get '/history' => 'librarians#history'
 
     get '/login' => 'sessions#new'
-    post '/login' => 'sessions#create'
+    post '/creates' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
     resources :books
     resources :borrows

@@ -1,4 +1,10 @@
 class BorrowsController < ApplicationController
+  before_action :find_ids, only: [:show, :accept, :reject, :returnbook, :destroy]
+
+  def find_ids
+    @borrow = Borrow.find(params[:id])
+  end
+
   def index
     @borrow = Borrow.all
   end
@@ -8,38 +14,36 @@ class BorrowsController < ApplicationController
   end
 
   def create
-    @borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
- 		student: current_librarian.name, status: false, returndate: "2023-01-30".to_date)
+    @borrow = Borrow.create(librarian_id: current_user.id, book_id: params[:book_id],
+ 		student: current_user.name, status: false, returndate: "2023-01-30".to_date)
     if @borrow.save
       respond_to do |format|
-       format.html 
-      format.js 
-    end
-    else
+        format.html 
+        format.js 
+      end
     end
   end
 
   def show
- 	  @borrow=Borrow.find(params[:id])
   end
 
   def requestedbook
-    @requestedbook=Borrow.where({ student: current_librarian.name, status: "false" }) | Borrow.where({ student: current_librarian.name, status: "true" })
+    @requestedbook = Borrow.studentrequestbook(current_user)
   end
 
   def borrowbook
-    @borrowbook=Borrow.where({ student: current_librarian.name, status: "true" })
+    @borrowbook = Borrow.borrowbooks(current_user)
   end
 
   def borrowshow
-    @borrowshow = Borrow.where(status: "false")
+    @borrowshow = Borrow.showrequestedbook
   end
 
   def showreturnbook
-	  @showreturnbook=Borrow.where(status: nil)
+	  @showreturnbook = Borrow.returnsbook
     respond_to do |format|
-       format.html
-       format.js
+      format.html
+      format.js
     end
   end
 
@@ -47,7 +51,6 @@ class BorrowsController < ApplicationController
   end
 
   def accept
-    @borrow=Borrow.find(params[:id])
     @borrow.update(status: true)
       respond_to do |format|
         format.html {redirect_to borrowshow_path}
@@ -56,7 +59,6 @@ class BorrowsController < ApplicationController
   end
 
   def reject
-    @borrow = Borrow.find(params[:id])
     @borrow.destroy
       respond_to do |format|
         format.js
@@ -64,10 +66,11 @@ class BorrowsController < ApplicationController
   end
 
   def returnbook
-    @borrow=Borrow.find(params[:id])
     @borrow.update(status: nil)
-      flash[:notice] = "Book Returned"
-      redirect_to borrowbook_path
+    respond_to do |format|
+      format.html {redirect_to borrowbook_path}
+      format.js  {redirect_to borrowbook_path}
+    end
   end
 
 
@@ -75,11 +78,10 @@ class BorrowsController < ApplicationController
   end
 
   def destroy
-    @borrow = Borrow.find(params[:id])
     @borrow.destroy
-      respond_to do |format|
-       format.js 
-      end
+    respond_to do |format|
+      format.js 
+    end
   end
 
   private

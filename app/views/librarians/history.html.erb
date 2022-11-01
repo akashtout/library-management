@@ -1,4 +1,4 @@
- <%if current_librarian%>
+ <%if current_user %>
 
 <div class="pull-right">
 <form action="<%= history_path %>">
@@ -31,4 +31,4 @@
  </tbody>
 </table>
 <%= link_to 'Back',home_path,class:"btn btn-outline-dark"%>
-<%end%>
+<% end %>

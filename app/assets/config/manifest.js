@@ -2,5 +2,5 @@
 //= link_directory ../stylesheets .css
  //= link jquery.js
 
-//= link application.js
+
 //= link application.scss

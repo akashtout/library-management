@@ -1,7 +1,7 @@
-<%if current_librarian %>
+<%if current_user %>
   <h1 class="text-success">Availabe Books</h1>
   <table class="table table-bordered">
-   <thead  class="thead-dark">
+   <thead class="thead-dark">
     <tr>
      <th id="abc">Id No.</th>
      <th>Title</th>
@@ -12,7 +12,7 @@
      <th>Request Book</th>
     </tr>
    </thead>
-  <tbody   id="request"   id="destroy">
+  <tbody id="request" id="destroy">
 <% @book.each do |book| %>  
    <tr  id="replaced">
      <td><%= link_to book.id%></td>

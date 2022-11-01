@@ -1,4 +1,10 @@
 class BooksController < ApplicationController
+  before_action :find_ides, only: [:show, :edit, :destroy, :update]
+
+  def find_ides
+    @book = Book.find(params[:id])
+  end
+
   def index
       if params[:search_key]
         @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
@@ -26,32 +32,28 @@ class BooksController < ApplicationController
   def create
      @book = Book.new(book_params)
      if @book.save
-        flash[:notice] = "You have successfully created"
-        redirect_to home_path
+       flash[:notice] = "You have successfully created"
+       redirect_to home_path
      else
-        render :new
+       render :new
      end
   end
 
   def show
-     @book = Book.find(params[:id])
   end
 
   def edit
-     @book = Book.find(params[:id])
   end
 
   def destroy
-     @book = Book.find(params[:id])
-     @book.destroy
-      respond_to do |format|
-        format.html {redirect_to home_path}
-        format.js
-      end
+    @book.destroy
+    respond_to do |format|
+      format.html {redirect_to home_path}
+      format.js
+    end
   end
 
   def update
-     @book = Book.find(params[:id])
      if @book.update(book_params)
        redirect_to @book
      else
@@ -61,6 +63,6 @@ class BooksController < ApplicationController
 
   private
     def book_params
-      params.require(:book).permit(:title, :price, :description, :author_id, :author_name,:search_key)
+      params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :search_key)
     end
   end
