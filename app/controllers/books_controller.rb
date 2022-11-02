@@ -2,7 +2,11 @@ class BooksController < ApplicationController
   before_action :find_ides, only: [:show, :edit, :destroy, :update]
 
   def find_ides
-    @book = Book.find(params[:id])
+      if check_librarian.present?
+        @book = Book.find(params[:id])
+    else
+       redirect_to home_path
+    end
   end
 
   def index
