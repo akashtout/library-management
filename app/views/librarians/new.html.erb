@@ -9,10 +9,9 @@
       <%= f.email_field :email, :placeholder => "Email" %><br>
       <%= label_tag 'Password'%><br>
       <%= f.password_field :password, :placeholder => "Password" %><br>
-      <%= f.select :usertype, ['Student']%>
-      <%= label_tag 'User_Type'%><br>
+      <%= f.hidden_field :usertype, value: 'Student' %>
       <%= f.submit "Submit", class: "btn-submit" %>
-      <% end %>
+      <% end %><br>
 
       <%= link_to 'Back to Home',librarianhome_path,class:"btn btn-outline-dark"%>
 

@@ -2,8 +2,10 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
-gem 'sprockets-rails', :require => 'sprockets/railtie'
 
+gem "figaro"
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap-sass'
 gem 'bootstrap'
 gem 'jquery-rails'

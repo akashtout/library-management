@@ -11,6 +11,10 @@ class LibrariansController < ApplicationController
     @librarian = Librarian.new
   end
 
+  def newlibrarian
+    @newlibrarian = Librarian.new
+  end
+
   def history
     if params[:search_key]
       @history = Borrow.where("librarian_id LIKE ? OR student LIKE ? ", 

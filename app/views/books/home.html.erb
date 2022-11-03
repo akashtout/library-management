@@ -22,7 +22,7 @@
       </table>
 
     <li> <%= link_to 'Available Books',studentindex_path, class:"btn btn-outline-success"%></li><br>
-    <li> <%= link_to 'Borrow Books',borrowbook_path , class:"btn btn-outline-success"%></li><br>
+    <li> <%= link_to 'Borrowed Books',borrowbook_path , class:"btn btn-outline-success"%></li><br>
     <li> <%= link_to 'Requested Books',requestedbook_path, class:"btn btn-outline-success"%></li><br>
 
     <% else %>
@@ -44,11 +44,12 @@
     </tbody>
     </table>
 
-    <li> <%= link_to 'View Request Book', borrowshow_path, class:"btn btn-outline-success" %></li><br>
+    <li> <%= link_to 'View Requested Book', borrowshow_path, class:"btn btn-outline-success" %></li><br>
     <li> <%= link_to 'All Books', books_path, class:"btn btn-outline-success"%></li><br>
     <li> <%= link_to 'not return by Student', history_path, class:"btn btn-outline-success" %></li><br>
     <li> <%= link_to "View Return Book ", returnb_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal",remote:true}%></li><br>
     <li> <%= link_to "Add new book", new_book_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal", remote:true}%></li><br>
+    <li><%= link_to "Create New librarian", newlibrarian_path, class: "btn btn-lg btn-outline-success" %></li>
     <% end %>
 <% end %>
 

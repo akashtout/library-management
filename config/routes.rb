@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     
     root "librarians#librarianhome"
 
+    get '/newlibrarian' => 'librarians#newlibrarian'
     get '/viewprofile' => 'librarians#viewprofile'
     get '/libraryindex' => 'librarians#libraryindex'
     get '/index' => 'librarians#index'

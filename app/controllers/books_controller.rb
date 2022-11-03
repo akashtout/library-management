@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :find_ides, only: [:show, :edit, :destroy, :update]
+  before_action :find_ides, only: [ :edit, :destroy, :update]
 
   def find_ides
       if check_librarian.present?
@@ -44,6 +44,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.find(params[:id])
   end
 
   def edit
