@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :find_ides, only: [ :edit, :destroy, :update]
+  before_action :find_ides, only: [ :edit, :update]
 
   def find_ides
       if check_librarian.present?
@@ -51,6 +51,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    @book = current_user.books.find(params[:id])
     @book.destroy
     respond_to do |format|
       format.html {redirect_to home_path}
@@ -68,6 +69,6 @@ class BooksController < ApplicationController
 
   private
     def book_params
-      params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :search_key)
+      params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :search_key)
     end
   end

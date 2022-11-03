@@ -14,6 +14,7 @@
       <%= f.number_field :author_id, :placeholder => "author_id" %><br>
       <%= label_tag 'Author'%><br>
       <%= f.text_field :author_name, :placeholder => "Author" %><br>
+      <%= f.hidden_field :librarian_id, value: current_user.id %>
       <%= f.submit "Submit", class: "btn btn-outline-success" %>   
       <% end %>
      </div>
