@@ -43,6 +43,10 @@ class BooksController < ApplicationController
      end
   end
 
+  def trashbin
+    @book=Book.only_deleted
+  end
+
   def show
     @book = Book.find(params[:id])
   end
@@ -58,6 +62,12 @@ class BooksController < ApplicationController
       format.js
     end
   end
+
+   def recover
+    if  @book=Book.only_deleted.first.recover
+     redirect_to trashbin_path
+    end 
+   end
 
   def update
      if @book.update(book_params)

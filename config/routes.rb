@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     put '/accept/:id' => 'borrows#accept', as: 'accept'
 
     get '/show' => 'librarians#show'
+
+    get '/trashbin' => 'books#trashbin'
+    get '/recover' => 'books#recover'
+
     get '/home' => 'books#home'
     get '/studentindex' => 'books#studentindex'
     
