@@ -1,30 +1,30 @@
 <%if current_user %>
   <h1 class="text-success">Availabe Books</h1>
   <table class="table table-bordered">
-   <thead class="thead-dark">
-    <tr>
-     <th id="abc">Id No.</th>
-     <th>Title</th>
-     <th>Price</th>
-     <th>Description</th>
-     <th>Author</th>
-     <th>View</th>
-     <th>Request Book</th>
-    </tr>
-   </thead>
-  <tbody id="request" id="destroy">
-<% @book.each do |book| %>  
-   <tr  id="replaced">
-     <td><%= link_to book.id%></td>
-     <td><%= link_to book.title %></td>
-     <td><%= link_to book.price%></td>
-     <td><%= link_to book.description%></td>    
-     <td><%= link_to book.author_name%></td>
-     <td><%= link_to  'View', book_path(book) ,class:"btn btn-outline-info"%></td>
-     <td  id="book_<%=book.id%>" ><%= button_to "Request Book", borrowcreate_path(book_id: book.id), remote: true, method: :post,class:"btn btn-outline-success" %></td>
-   </tr>
-<% end %>
-  </tbody>
+    <thead class="thead-dark">
+      <tr>
+        <th id="abc">Id No.</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>View</th>
+        <th>Request Book</th>
+      </tr>
+    </thead>
+    <tbody id="request" id="destroy">
+      <% @book.each do |book| %>  
+      <tr  id="replaced">
+        <td><%= link_to book.id%></td>
+        <td><%= link_to book.title %></td>
+        <td><%= link_to book.price%></td>
+        <td><%= link_to book.description%></td>    
+        <td><%= link_to book.author_name%></td>
+        <td><%= link_to  'View', book_path(book) ,class:"btn btn-outline-info"%></td>
+        <td  id="book_<%=book.id%>" ><%= button_to "Request Book", borrowcreate_path(book_id: book.id), remote: true, method: :post,class:"btn btn-outline-success" %></td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
   <%= link_to 'Back to Home',home_path,class:"btn btn-outline-dark" %> 
 <% end %>

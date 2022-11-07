@@ -1,34 +1,30 @@
- <%if current_user %>
-
 <div class="pull-right">
 <form action="<%= history_path %>">
   <input type="text" placeholder="    Search here" name="search_key">
   <button type="submit">Search</button>
 </form>
 </div>
-
- <h1 class="text-primary">List of Student</h1>
+<h1 class="text-primary">List of Student</h1>
 <table class="table table-bordered">
- <thead class="thead-dark">
-   <tr>
-   	 <th>Student Id</th>
-     <th>book Id</th>
-     <th>Student name</th>
-     <th>Issued Date</th>
-     <th>Return Date</th>
-        </tr>
- </thead>
- <tbody>
- 	  <% @history.each do |view| %>
+  <thead class="thead-dark">
+    <tr>
+   	  <th>Student Id</th>
+      <th>book Id</th>
+      <th>Student name</th>
+      <th>Issued Date</th>
+      <th>Return Date</th>
+    </tr>
+  </thead>
+  <tbody>
+ 	<% @history.each do |view| %>
   <tr>
- 	   <td><%= view.librarian_id %></td>
-     <td><%= view.book_id%></td>
-     <td><%= view.student%></td>
-     <td><%= view.created_at.to_date%></td>
-     <td><%= view.returndate%></td>
-       <% end %>
+ 	  <td><%= view.librarian_id %></td>
+    <td><%= view.book_id%></td>
+    <td><%= view.student%></td>
+    <td><%= view.created_at.to_date%></td>
+    <td><%= view.returndate%></td>
   </tr>
- </tbody>
+  <% end %>
+  </tbody>
 </table>
 <%= link_to 'Back',home_path,class:"btn btn-outline-dark"%>
-<% end %>

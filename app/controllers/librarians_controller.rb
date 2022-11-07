@@ -1,10 +1,15 @@
 class LibrariansController < ApplicationController
+  before_action :protects, only: [ :index,:current_user_profile]
+  before_action :librarian_validates,  only: [:newlibrarian, :history]
   def index
     @librarian = Librarian.all
   end
 
   def home
     @librarian = Librarian.all  
+  end
+
+  def librarianhome
   end
 
   def new
@@ -30,14 +35,14 @@ class LibrariansController < ApplicationController
   def create
     librarian = Librarian.new(librarian_params)
     if librarian.save
-      flash[:notice]="Signup successful"
+      flash[:notice]="Acount Create successful"
       redirect_to '/'
     else
       redirect_to '/signup'
     end
   end
 
-  def viewprofile
+  def current_user_profile
     respond_to do |format|
       format.html
       format.js
@@ -48,7 +53,21 @@ class LibrariansController < ApplicationController
   end
 
   private
-    def librarian_params
-      params.require(:librarian).permit(:name, :email, :password, :usertype, :search_key)
+  def protects
+    if current_user.present?
+    else
+      redirect_to librarianhome_path
     end
   end
+
+  def librarian_validates
+    if check_librarian.present?
+    else
+      redirect_to librarianhome_path
+    end
+  end
+
+  def librarian_params
+    params.require(:librarian).permit(:name, :email, :password, :usertype, :search_key)
+  end
+end

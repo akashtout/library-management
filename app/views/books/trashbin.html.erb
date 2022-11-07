@@ -1,28 +1,26 @@
-
-
-  <h1 class="text-success">Deleted Books</h1>
-  <table class="table table-bordered">
+<h1 class="text-success">Deleted Books</h1>
+<table class="table table-bordered">
   <thead  class="thead-dark">
-  <tr>
-    <th>Id No.</th>
-    <th>Title</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Author Name</th>
-    <th>Restore</th>
-  </tr>
+    <tr>
+      <th>Id No.</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Author Name</th>
+      <th>Restore</th>
+    </tr>
   </thead>
   <tbody >
-<% @book.each do |bin| %>  
-  <tr>
-    <td><%= link_to bin.id%></td>
-    <td><%= link_to bin.title %></td>
-    <td><%= link_to bin.price%></td>
-    <td><%= link_to bin.description%></td>    
-    <td><%= link_to bin.author_name%></td>
-    <td><%= link_to 'restore',recover_path, class: "btn btn-outline-success" %></td>
-  </tr>
-<% end %>
+    <% @book.each do |bin| %>  
+    <tr>
+      <td><%= link_to bin.id%></td>
+      <td><%= link_to bin.title %></td>
+      <td><%= link_to bin.price%></td>
+      <td><%= link_to bin.description%></td>    
+      <td><%= link_to bin.author_name%></td>
+      <td><%= link_to 'restore',recover_path, class: "btn btn-outline-success" %></td>
+    </tr>
+    <% end %>
   </tbody>
-  </table>
+</table>
 <%= link_to 'Back to Home',books_path, class: "btn btn-outline-dark" %>

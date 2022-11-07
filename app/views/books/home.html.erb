@@ -1,6 +1,5 @@
 <%if current_user %>
-<%= render partial: "modal_popup" %>
-
+  <%= render partial: "modal_popup" %>
   <h1 class="text-center text-success"><strong>Welcome to the library</strong></h1>
     <%if check_user%>
       <h1  class="text-primary">Student Details</h1>
@@ -43,13 +42,15 @@
       </tr>
     </tbody>
     </table>
+      <li> <%= link_to 'View Requested Book', borrowshow_path, class:"btn btn-outline-success" %></li><br>
+      <li> <%= link_to 'All Books', books_path, class:"btn btn-outline-success"%></li><br>
+      <li> <%= link_to 'not return by Student', history_path, class:"btn btn-outline-success" %></li><br>
+      <li> <%= link_to "View Return Book ", returnb_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal",remote:true}%></li><br>
+      <li> <%= link_to "Add new book", new_book_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal", remote:true}%></li><br>
+      <li><%= link_to "Create New librarian", newlibrarian_path, class: "btn btn-outline-success" %></li><br>
+      <li><%= link_to "Overdue Date Book", overdue_date_book_path, class: "btn btn-outline-success" %></li>
+      <li><%= link_to "return book", return_book_path, class: "btn btn-outline-success" %></li>
 
-    <li> <%= link_to 'View Requested Book', borrowshow_path, class:"btn btn-outline-success" %></li><br>
-    <li> <%= link_to 'All Books', books_path, class:"btn btn-outline-success"%></li><br>
-    <li> <%= link_to 'not return by Student', history_path, class:"btn btn-outline-success" %></li><br>
-    <li> <%= link_to "View Return Book ", returnb_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal",remote:true}%></li><br>
-    <li> <%= link_to "Add new book", new_book_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal", remote:true}%></li><br>
-    <li><%= link_to "Create New librarian", newlibrarian_path, class: "btn btn-outline-success" %></li>
     <% end %>
 <% end %>
 

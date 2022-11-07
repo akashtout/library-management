@@ -3,21 +3,21 @@
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
-     	  <th> Student Id </th>
+        <th> Student Id </th>
         <th> Book Id </th>
         <th> Return Date </th>
         <th>Return to library</th>
       </tr>
     </thead>
-    <tbody>
-      <% @showreturnbook.each do |rbs| %>
+    <% @return_book.each do |rbs| %>
+    <tbody  id="rejectrequest<%= rbs.id %>">
       <tr>
         <td><%= rbs.librarian_id%></td>
         <td><%= rbs.book_id%></td>
- 	      <td><%=rbs.created_at.to_date%></td>
-        <td><%= link_to "Okk", reject_path(rbs),method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
+        <td><%=rbs.created_at.to_date%></td>
+        <td><%= link_to "Added to Library", reject_path(rbs),method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
       </tr>
-      <% end %>
     </tbody>
+    <% end %>
   </table> 
 <% end %>

@@ -1,29 +1,28 @@
  <%if current_user%>
-     <h1 class="text-primary">Requested Books</h1>
-     <table class="table table-bordered">
-     <thead >
-     <tr>
-   	   <th> Student Id </th>
-       <th> book Id </th>
-       <th> Date </th>
-       <th>status</th>
-     </tr>
-     </thead>
-     <tbody>
- <% @requestedbook.each do |rb| %>
-     <tr id="cancel<%= rb.id %>">
-       <td><%= rb.librarian_id%></td>
-       <td><%= rb.book_id%></td>
- 	   <td><%=rb.created_at.to_date%></td>
-
-       <% if rb.status == true %>
-       <td><%= 'Approved' %></td>
-       <% else rb.status == false %>
-       <td><%= "Pending" %></td>
-       <% end %>
-
-     </tbody>
- <% end %>
-     </table>
-<%= link_to 'Back',home_path,class:"btn btn-outline-dark"%>
+  <h1 class="text-primary">Requested Books</h1>
+  <table class="table table-bordered">
+    <thead >
+      <tr>
+   	    <th> Student Id </th>
+        <th> book Id </th>
+        <th> Date </th>
+        <th>status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @requestedbook.each do |rb| %>
+      <tr id="cancel<%= rb.id %>">
+        <td><%= rb.librarian_id%></td>
+        <td><%= rb.book_id%></td>
+ 	      <td><%=rb.created_at.to_date%></td>
+        <% if rb.status == true %>
+        <td><%= 'Approved' %></td>
+        <% else rb.status == false %>
+        <td><%= "Pending" %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Back',home_path,class:"btn btn-outline-dark"%>
 <% end %>

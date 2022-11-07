@@ -1,6 +1,5 @@
 class Book < ApplicationRecord
-  
-  acts_as_paranoid recover_dependent_associations: true
+  acts_as_paranoid 
   belongs_to :author
   has_many :borrows, dependent: :destroy
   belongs_to :librarian

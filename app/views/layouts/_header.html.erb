@@ -1,44 +1,40 @@
 <!DOCTYPE html>
   <html>
   <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>libraryapp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>libraryapp</title>
   <nav class="navbar navbar-dark bg-dark ">
-  <div>
-  <a class="navbar-brand  " href="">Library Management System</a>
-  </div>
- <%if current_user %>
-
- <div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-       <div class="modal-header"></div>
-       <div class="modal-content" id='modal_content'></div>
-         <div class="modal-footer">
-           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-         </div>
+    <div>
+      <a class="navbar-brand  " href="">Library Management System</a>
+    </div>
+  <%if current_user %>
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header"></div>
+        <div class="modal-content" id='modal_content'></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
     </div>
   </div>
-</div>
-
-  <a class="navbar-brand  " href="/home">Home</a>
-  <a class="navbar-brand  pull-right" href="/logout">Logout</a>
- <%= link_to "View profile", viewprofile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
-  </div>
- <% else %>
-  <a  class="navbar-brand  pull-" href="/signup">signup</a>
-  <a  class="navbar-brand  pull-right" href="/login">Login</a>
- <% end %>
+    <a class="navbar-brand  " href="/home">Home</a>
+    <a class="navbar-brand  pull-right" href="/logout">Logout</a>
+    <%= link_to "View profile", current_user_profile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
+  <% else %>
+    <a class="navbar-brand  pull-" href="/signup">signup</a>
+    <a class="navbar-brand  pull-right" href="/login">Login</a>
+  <% end %>
   </nav>
   </head>
   <body>
- <% flash.each do |type, msg| %>
-  <div>
- <%= msg %>
-  </div>
- <% end %>
-
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
   </body>
   </html>
 

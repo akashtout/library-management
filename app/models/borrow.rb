@@ -8,5 +8,4 @@ class Borrow < ApplicationRecord
   scope :studentrequestbook, ->(librarian) { where(student: librarian.name, status: false).or(where(student: librarian.name,status: true))}
   scope :starts_with, ->(id) { where("#{id}").update(status: nil)}
   scope :updatetrue, -> { update(status: true) }
- 
 end

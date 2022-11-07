@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get '/borrowbook' => 'borrows#borrowbook'
     get '/borrowshow' => 'borrows#borrowshow'
     get '/showreturnbook' => 'borrows#showreturnbook', as: 'returnb'
+    get '/return_book' => 'borrows#return_book', as: 'return_book'
+    get '/overdue_date_book' => 'borrows#overdue_date_book'
 
     patch '/returnbook/:id' => 'borrows#returnbook', as: 'return'
     delete '/reject/:id' => 'borrows#reject', as: 'reject'
@@ -23,7 +25,7 @@ Rails.application.routes.draw do
     root "librarians#librarianhome"
 
     get '/newlibrarian' => 'librarians#newlibrarian'
-    get '/viewprofile' => 'librarians#viewprofile'
+    get '/current_user_profile' => 'librarians#current_user_profile'
     get '/libraryindex' => 'librarians#libraryindex'
     get '/index' => 'librarians#index'
     get '/signup' => 'librarians#new'
