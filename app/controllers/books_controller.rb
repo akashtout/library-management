@@ -1,13 +1,6 @@
 class BooksController < ApplicationController
-  before_action :find_ides, only: [ :edit, :update]
+  before_action :student_validate, only: [ :studentindex]
 
-  def find_ides
-      if check_librarian.present?
-        @book = Book.find(params[:id])
-    else
-       redirect_to home_path
-    end
-  end
 
   def index
       if params[:search_key]
@@ -19,7 +12,8 @@ class BooksController < ApplicationController
   end
 
   def studentindex
-     @book = Book.all
+    borrow_id=Borrow.all.pluck(:id)
+    @book=Book.where.not(id: borrow_id)
   end
   
   def home
@@ -52,6 +46,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    @book = Book.find(params[:id])
   end
 
   def destroy
@@ -70,6 +65,7 @@ class BooksController < ApplicationController
    end
 
   def update
+     @book = Book.find(params[:id])
      if @book.update(book_params)
        redirect_to @book
      else
@@ -81,4 +77,12 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :search_key)
     end
+
+  def student_validate
+      if check_user.present?
+       
+    else
+       redirect_to home_path
+    end
+  end
   end

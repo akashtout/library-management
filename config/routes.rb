@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get '/requestedbook' => 'borrows#requestedbook'
     get '/borrowbook' => 'borrows#borrowbook'
     get '/borrowshow' => 'borrows#borrowshow'
+     get '/return_book' => 'borrows#return_book'
     get '/showreturnbook' => 'borrows#showreturnbook', as: 'returnb'
 
     patch '/returnbook/:id' => 'borrows#returnbook', as: 'return'
