@@ -9,15 +9,15 @@
         <th>Return to library</th>
       </tr>
     </thead>
-    <tbody>
-      <% @showreturnbook.each do |rbs| %>
+    <% @showreturnbook.each do |rbs| %>
+    <tbody id="rejectrequest<%= rbs.id %>">
       <tr>
         <td><%= rbs.librarian_id%></td>
         <td><%= rbs.book_id%></td>
  	      <td><%=rbs.created_at.to_date%></td>
-        <td><%= link_to "Okk", reject_path(rbs),method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
+        <td><%= link_to "Added to Library", reject_path(rbs),method: :delete, remote: true ,class:"btn btn-outline-success"%></td>
       </tr>
-      <% end %>
     </tbody>
+    <% end %>
   </table> 
 <% end %>

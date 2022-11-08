@@ -86,7 +86,7 @@ class BooksController < ApplicationController
   end
 
   def student_validates
-    if current_user.present?
+    if check_user.present?
     else
       redirect_to home_path
     end
