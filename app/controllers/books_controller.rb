@@ -32,7 +32,8 @@ class BooksController < ApplicationController
       if @book.save
       end
     end
-    redirect_to home_path
+    flash[:notice]="Book Create successful"
+    redirect_to home_path 
   end
 
   def trashbin
