@@ -10,14 +10,14 @@ class BooksController < ApplicationController
     end
   end
 
+  def home
+  end
+
   def studentindex
     borrow_id = Borrow.all.pluck(:book_id)
     @book = Book.where.not(id: borrow_id)
   end
   
-  def home
-  end
-
   def new
     @book = Book.new
     respond_to do |format|
@@ -27,13 +27,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    if @book.save
-      flash[:notice] = "You have successfully created"
-      redirect_to home_path
-    else
-      render :new
+    params[:book_count].to_i.times do |i|
+      @book = Book.new(book_params)
+      if @book.save
+      end
     end
+    redirect_to home_path
   end
 
   def trashbin
@@ -50,12 +49,16 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book = current_user.books.find(params[:id])
     @book.destroy
     respond_to do |format|
       format.html {redirect_to home_path}
       format.js
     end
+  end
+
+  def really_destroy
+    @book = Book.only_deleted.first.destroy
+    redirect_to trashbin_path
   end
 
   def recover
@@ -74,9 +77,6 @@ class BooksController < ApplicationController
   end
 
   private
-  def book_params
-    params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :search_key)
-  end
 
   def librarian_validates
     if check_librarian.present?
@@ -91,4 +91,9 @@ class BooksController < ApplicationController
       redirect_to home_path
     end
   end
+  
+  def book_params
+    params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :search_key)
+  end
+
 end

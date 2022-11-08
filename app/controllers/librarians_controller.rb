@@ -1,5 +1,5 @@
 class LibrariansController < ApplicationController
-  before_action :protects, only: [ :index,:current_user_profile]
+  before_action :validates, only: [ :index,:current_user_profile]
   before_action :librarian_validates,  only: [:newlibrarian, :history]
   def index
     @librarian = Librarian.all
@@ -49,11 +49,9 @@ class LibrariansController < ApplicationController
     end
   end
 
-  def libraryindex
-  end
-
   private
-  def protects
+
+  def validates
     if current_user.present?
     else
       redirect_to librarianhome_path
@@ -70,4 +68,5 @@ class LibrariansController < ApplicationController
   def librarian_params
     params.require(:librarian).permit(:name, :email, :password, :usertype, :search_key)
   end
+  
 end

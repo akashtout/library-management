@@ -1,5 +1,5 @@
 class BorrowsController < ApplicationController
-  before_action :student_validates, only: [:show, :destroy,:requestedbook,:borrowbook, :requestedbook]
+  before_action :student_validates, only: [:destroy,:requestedbook,:borrowbook]
   before_action :validates, only: [:borrowshow, :showreturnbook, :overdue_date_book]
   def index
     @borrow = Borrow.all
@@ -89,6 +89,7 @@ class BorrowsController < ApplicationController
   end
 
   private
+
   def validates
     if check_librarian.present?
     else
@@ -106,6 +107,7 @@ class BorrowsController < ApplicationController
   def borrow_params
     params.require(:borrow).permit(:librarian_id, :book_id, :student, :returndate, :status)
   end
+  
 end
 
 

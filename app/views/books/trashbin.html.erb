@@ -8,6 +8,7 @@
       <th>Description</th>
       <th>Author Name</th>
       <th>Restore</th>
+      <th>Destroy</th>
     </tr>
   </thead>
   <tbody >
@@ -19,6 +20,7 @@
       <td><%= link_to bin.description%></td>    
       <td><%= link_to bin.author_name%></td>
       <td><%= link_to 'restore',recover_path, class: "btn btn-outline-success" %></td>
+      <td><%= link_to 'Destroy',really_destroy_path, method: :delete, class: "btn btn-outline-danger" %></td>
     </tr>
     <% end %>
   </tbody>

@@ -1,7 +1,7 @@
-<div class="signup">
+<div class="signup"><br>
   <div class="container">
     <div class="form">
-      <h2><strong>Create Librarian</strong></h2>
+      <h2><strong>Create New Librarian</strong></h2>
       <%= form_for(@newlibrarian) do |fr| %>
       <%= label_tag 'Name'%><br>         
       <%= fr.text_field :name, :placeholder => "name" %><br>
@@ -9,7 +9,7 @@
       <%= fr.email_field :email, :placeholder => "Email" %><br>
       <%= label_tag 'Password'%><br>
       <%= fr.password_field :password, :placeholder => "Password" %><br>
-      <%= fr.hidden_field :usertype, value: 'librarian' %>
+      <%= fr.hidden_field :usertype, value: 'librarian' %><br>
       <%= fr.submit "Submit", class: "btn-submit" %>
       <% end %><br>
       <%= link_to 'Back to Home',home_path,class:"btn btn-outline-dark"%>
