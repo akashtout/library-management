@@ -4,15 +4,20 @@ class SessionsController < ApplicationController
   end
   
   def create
-    librarian = Librarian.find_by_email(params[:email])
-    if librarian && librarian.authenticate(params[:password])
-      session[:librarian_id] = librarian.id
-      flash[:notice]="Login successful"
-      redirect_to home_page_path
-    else
-      flash[:notice]="Invalid Email or Password"
-      redirect_to '/login'
-    end
+    @librarian = Librarian.find_by_email(params[:email])
+    if @librarian.present?
+      if @librarian.password == params[:password]
+        session[:librarian_id] = @librarian.id
+        flash[:notice]="Login successful"
+        redirect_to home_page_path
+      else
+        flash[:notice]="Invalid Email or Password"
+        redirect_to '/login'
+      end
+  else
+    flash[:notice]="Invalid Email or Password"
+    redirect_to '/login'
+  end
   end
 
   def destroy
@@ -22,5 +27,4 @@ class SessionsController < ApplicationController
 end 
 
 
-
-      
+ 
