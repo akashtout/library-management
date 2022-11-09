@@ -4,14 +4,12 @@ class BorrowsController < ApplicationController
   def index
     @borrow = Borrow.all
   end
-
   def new
     @borrow = Borrow.new
   end
-
   def create
     @borrow = Borrow.create(librarian_id: current_user.id, book_id: params[:book_id],
- 		student: current_user.name, status: false, returndate: "2022-11-08".to_date)
+    student: current_user.name, status: false, returndate: "2022-11-08".to_date)
     if @borrow.save
       respond_to do |format|
         format.html 
@@ -19,42 +17,30 @@ class BorrowsController < ApplicationController
       end
     end
   end
-
   def show
     @borrow = Borrow.find(params[:id])
   end
-
   def overdue_date_book
     @overdue_date_book=Borrow.where("returndate <= :date", date: Date.today).where(status: true)
   end
-
   def requestedbook
     @requestedbook = Borrow.studentrequestbook(current_user)
   end
-
   def borrowbook
     @borrowbook = Borrow.borrowbooks(current_user)
   end
-
   def borrowshow
     @borrowshow = Borrow.showrequestedbook
   end
-
   def showreturnbook
-	  @showreturnbook = Borrow.returnsbook
+    @showreturnbook = Borrow.returnsbook
     respond_to do |format|
       format.html
       format.js
     end
   end
-
-  def return_book
-    @return_book=Borrow.where(status: nil)    
-  end
-
   def update
   end
-
   def accept
     @borrow = Borrow.find(params[:id])
     @borrow.update(status: true)
@@ -63,7 +49,6 @@ class BorrowsController < ApplicationController
       format.js  {redirect_to borrowshow_path}
     end
   end
-
   def reject
     @borrow = Borrow.find(params[:id])
     @borrow.destroy
@@ -71,7 +56,6 @@ class BorrowsController < ApplicationController
       format.js
     end
   end
-
   def returnbook
     @borrow = Borrow.find(params[:id])
     @borrow.update(status: nil)
@@ -80,10 +64,8 @@ class BorrowsController < ApplicationController
       format.js  {redirect_to borrowbook_path}
     end
   end
-
   def edit
   end
-
   def destroy
     @borrow = Borrow.find(params[:id])
     @borrow.destroy
@@ -91,16 +73,13 @@ class BorrowsController < ApplicationController
       format.js 
     end
   end
-
   private
-
   def validates
     if check_librarian.present?
     else
       redirect_to librarianhome_path
     end
   end
-
   def student_validates
     if current_user.present?
     else
@@ -113,6 +92,4 @@ class BorrowsController < ApplicationController
   end
   
 end
-
-
 

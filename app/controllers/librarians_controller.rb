@@ -4,21 +4,16 @@ class LibrariansController < ApplicationController
   def index
     @librarian = Librarian.all
   end
-
   def home_page  
   end
-
   def root_page
   end
-
   def new
     @librarian = Librarian.new
   end
-
   def new_librarian
     @new_librarian = Librarian.new
   end
-
   def history
     if params[:search_key]
       @history = Borrow.where("librarian_id LIKE ? OR student LIKE ? ", 
@@ -27,10 +22,8 @@ class LibrariansController < ApplicationController
       @history=Borrow.where(status:'true')
     end
   end
-
   def show  
   end
-
   def create
     librarian = Librarian.new(librarian_params)
     if librarian.save
@@ -40,30 +33,25 @@ class LibrariansController < ApplicationController
       redirect_to '/signup'
     end
   end
-
   def current_user_profile
     respond_to do |format|
       format.html
       format.js
     end
   end
-
   private
-
   def validates
     if current_user.present?
     else
       redirect_to home_page_path
     end
   end
-
   def librarian_validates
     if check_librarian.present?
     else
       redirect_to home_page_path
     end
   end
-
   def librarian_params
     params.require(:librarian).permit(:name, :email, :password, :usertype, :search_key)
   end

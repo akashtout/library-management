@@ -11,18 +11,18 @@ class SessionsController < ApplicationController
         flash[:notice]="Login successful"
         redirect_to home_page_path
       else
-
         flash[:notice]="Invalid Email or Password"
         redirect_to '/login'
       end
-    else
-      flash[:notice]="Invalid Email or Password"
-      redirect_to '/login'
-    end
+  else
+    flash[:notice]="Invalid Email or Password"
+    redirect_to '/login'
   end
-
+  end
   def destroy
     session[:librarian_id] = nil
     redirect_to root_page_path
   end
 end 
+
+ 
