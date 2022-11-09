@@ -11,12 +11,13 @@ class SessionsController < ApplicationController
         flash[:notice]="Login successful"
         redirect_to home_page_path
       else
-        flash[:notice]="Invalid Password"
+
+        flash[:notice]="Invalid Email or Password"
         redirect_to '/login'
       end
     else
-      flash[:notice]="Invalid Email"
-        redirect_to '/login'
+      flash[:notice]="Invalid Email or Password"
+      redirect_to '/login'
     end
   end
 
@@ -25,4 +26,3 @@ class SessionsController < ApplicationController
     redirect_to root_page_path
   end
 end 
-
