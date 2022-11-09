@@ -48,6 +48,10 @@ class BorrowsController < ApplicationController
     end
   end
 
+  def return_book
+    @return_book=Borrow.where(status: nil)    
+  end
+
   def update
   end
 

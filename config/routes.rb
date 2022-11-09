@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   delete '/books/:id' => 'books#destroy', as: 'destroy'
   post '/borrowcreate' => 'borrows#create'
   get '/requestedbook' => 'borrows#requestedbook'
@@ -6,6 +7,15 @@ Rails.application.routes.draw do
   get '/borrowshow' => 'borrows#borrowshow'
   get '/showreturnbook' => 'borrows#showreturnbook', as: 'returnb'
   get '/overdue_date_book' => 'borrows#overdue_date_book'
+=======
+    delete '/books/:id' => 'books#destroy', as: 'destroy'
+    post '/borrowcreate' => 'borrows#create'
+    get '/requestedbook' => 'borrows#requestedbook'
+    get '/borrowbook' => 'borrows#borrowbook'
+    get '/borrowshow' => 'borrows#borrowshow'
+     get '/return_book' => 'borrows#return_book'
+    get '/showreturnbook' => 'borrows#showreturnbook', as: 'returnb'
+>>>>>>> main
 
   patch '/returnbook/:id' => 'borrows#returnbook', as: 'return'
   delete '/reject/:id' => 'borrows#reject', as: 'reject'

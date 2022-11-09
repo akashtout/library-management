@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+<<<<<<< HEAD
   before_action :librarian_validates, only: [ :index, :trashbin, :recover, :new, :create, :edit, :destroy, :update]
   before_action :student_validates, only: [:studentindex]
   
@@ -10,10 +11,19 @@ class BooksController < ApplicationController
       @books = Book.all
     end
   end
+=======
+  before_action :student_validate, only: [ :studentindex]
+
+>>>>>>> main
 
   def studentindex
+<<<<<<< HEAD
     borrow_id = Borrow.all.pluck(:book_id)
     @book = Book.where.not(id: borrow_id)
+=======
+    borrow_id=Borrow.all.pluck(:id)
+    @book=Book.where.not(id: borrow_id)
+>>>>>>> main
   end
   
   def new
@@ -67,12 +77,21 @@ class BooksController < ApplicationController
   end
 
   def update
+<<<<<<< HEAD
     @book = Book.find(params[:id])
     if @book.update(book_params)
       redirect_to @book
     else
       render :edit
     end
+=======
+     @book = Book.find(params[:id])
+     if @book.update(book_params)
+       redirect_to @book
+     else
+       render :edit
+     end
+>>>>>>> main
   end
 
   private
@@ -82,6 +101,14 @@ class BooksController < ApplicationController
     else
       redirect_to home_page_path
     end
+
+  def student_validate
+      if check_user.present?
+       
+    else
+       redirect_to home_path
+    end
+  end
   end
 
   def student_validates
