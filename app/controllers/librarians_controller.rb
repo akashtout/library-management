@@ -1,6 +1,6 @@
 class LibrariansController < ApplicationController
   before_action :validates, only: [ :index, :current_user_profile, :home_page]
-  before_action :librarian_validates, only: [:newlibrarian, :history]
+  before_action :librarian_validates, only: [:new_librarian, :history]
   def index
     @librarian = Librarian.all
   end
@@ -8,7 +8,7 @@ class LibrariansController < ApplicationController
   def home_page  
   end
 
-  def librarianhome
+  def root_page
   end
 
   def new
@@ -53,14 +53,14 @@ class LibrariansController < ApplicationController
   def validates
     if current_user.present?
     else
-      redirect_to librarianhome_path
+      redirect_to home_page_path
     end
   end
 
   def librarian_validates
     if check_librarian.present?
     else
-      redirect_to librarianhome_path
+      redirect_to home_page_path
     end
   end
 

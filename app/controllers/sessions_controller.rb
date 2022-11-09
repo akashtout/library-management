@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:librarian_id] = nil
-    redirect_to '/'
+    redirect_to root_page_path
   end
 end 
 

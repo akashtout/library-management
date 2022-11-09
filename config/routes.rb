@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   get '/recover' => 'books#recover'
   get '/studentindex' => 'books#studentindex'
   
-  get '/librarianhome' => 'librarians#librarianhome'
+  get '/root_page' => 'librarians#root_page'
   
-  root "librarians#librarianhome"
+  root "librarians#root_page"
 
 
   get '/new_librarian' => 'librarians#new_librarian'
