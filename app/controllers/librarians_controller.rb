@@ -1,12 +1,11 @@
 class LibrariansController < ApplicationController
-  before_action :validates, only: [ :index,:current_user_profile]
-  before_action :librarian_validates,  only: [:newlibrarian, :history]
+  before_action :validates, only: [ :index, :current_user_profile, :home_page]
+  before_action :librarian_validates, only: [:newlibrarian, :history]
   def index
     @librarian = Librarian.all
   end
 
-  def home
-    @librarian = Librarian.all  
+  def home_page  
   end
 
   def librarianhome
@@ -16,8 +15,8 @@ class LibrariansController < ApplicationController
     @librarian = Librarian.new
   end
 
-  def newlibrarian
-    @newlibrarian = Librarian.new
+  def new_librarian
+    @new_librarian = Librarian.new
   end
 
   def history

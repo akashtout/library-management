@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :librarian_validates, only: [ :index, :trashbin, :recover, :new, :create, :edit, :destroy, :update]
   before_action :student_validates, only: [:studentindex]
+  
   def index
     if params[:search_key]
       @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
@@ -8,9 +9,6 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
-  end
-
-  def home
   end
 
   def studentindex
@@ -33,7 +31,7 @@ class BooksController < ApplicationController
       end
     end
     flash[:notice]="Book Create successful"
-    redirect_to home_path 
+    redirect_to home_page_path 
   end
 
   def trashbin
@@ -52,7 +50,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     respond_to do |format|
-      format.html {redirect_to home_path}
+      format.html {redirect_to home_page_path}
       format.js
     end
   end
@@ -82,14 +80,14 @@ class BooksController < ApplicationController
   def librarian_validates
     if check_librarian.present?
     else
-      redirect_to home_path
+      redirect_to home_page_path
     end
   end
 
   def student_validates
     if check_user.present?
     else
-      redirect_to home_path
+      redirect_to home_page_path
     end
   end
   

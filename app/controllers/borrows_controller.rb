@@ -1,6 +1,6 @@
 class BorrowsController < ApplicationController
-  before_action :student_validates, only: [:destroy,:requestedbook,:borrowbook]
-  before_action :validates, only: [:borrowshow, :showreturnbook, :overdue_date_book]
+  before_action :student_validates, only: [:destroy, :requestedbook, :borrowbook]
+  before_action :validates, only: [:borrowshow, :showreturnbook, :overdue_date_book, :index]
   def index
     @borrow = Borrow.all
   end
@@ -11,7 +11,7 @@ class BorrowsController < ApplicationController
 
   def create
     @borrow = Borrow.create(librarian_id: current_user.id, book_id: params[:book_id],
- 		student: current_user.name, status: false, returndate: "2022-11-10".to_date)
+ 		student: current_user.name, status: false, returndate: "2022-11-08".to_date)
     if @borrow.save
       respond_to do |format|
         format.html 

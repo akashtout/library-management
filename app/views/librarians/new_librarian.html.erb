@@ -2,7 +2,7 @@
   <div class="container">
     <div class="form">
       <h2><strong>Create New Librarian</strong></h2>
-      <%= form_for(@newlibrarian) do |fr| %>
+      <%= form_for(@new_librarian) do |fr| %>
       <%= label_tag 'Name'%><br>         
       <%= fr.text_field :name, :placeholder => "name" %><br>
       <%= label_tag 'Email'%><br>
@@ -12,7 +12,7 @@
       <%= fr.hidden_field :usertype, value: 'librarian' %><br>
       <%= fr.submit "Submit", class: "btn-submit" %>
       <% end %><br>
-      <%= link_to 'Back to Home',home_path,class:"btn btn-outline-dark"%>
+      <%= link_to 'Back to Home',home_page_path,class:"btn btn-outline-dark"%>
     </div>
   </div>
 </div>

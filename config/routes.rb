@@ -16,15 +16,15 @@ Rails.application.routes.draw do
 
   get '/trashbin' => 'books#trashbin'
   get '/recover' => 'books#recover'
-
-  get '/home' => 'books#home'
   get '/studentindex' => 'books#studentindex'
   
   get '/librarianhome' => 'librarians#librarianhome'
   
   root "librarians#librarianhome"
 
-  get '/newlibrarian' => 'librarians#newlibrarian'
+
+  get '/new_librarian' => 'librarians#new_librarian'
+  get '/home_page' => 'librarians#home_page'
   get '/current_user_profile' => 'librarians#current_user_profile'
   get '/index' => 'librarians#index'
   get '/signup' => 'librarians#new'
