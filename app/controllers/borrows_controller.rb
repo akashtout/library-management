@@ -10,8 +10,8 @@ class BorrowsController < ApplicationController
   end
 
   def create
-    @borrow = Borrow.create(librarian_id: current_user.id, book_id: params[:book_id],
- 		student: current_user.name, status: false, returndate: "2022-11-08".to_date)
+    @borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
+ 		student: current_librarian.name, status: false, returndate: "2022-11-08".to_date)
     if @borrow.save
       respond_to do |format|
         format.html 
@@ -29,11 +29,11 @@ class BorrowsController < ApplicationController
   end
 
   def requestedbook
-    @requestedbook = Borrow.studentrequestbook(current_user)
+    @requestedbook = Borrow.studentrequestbook(current_librarian)
   end
 
   def borrowbook
-    @borrowbook = Borrow.borrowbooks(current_user)
+    @borrowbook = Borrow.borrowbooks(current_librarian)
   end
 
   def borrowshow
@@ -93,14 +93,14 @@ class BorrowsController < ApplicationController
   def validates
     if check_librarian.present?
     else
-      redirect_to librarianhome_path
+      redirect_to root_page
     end
   end
 
   def student_validates
-    if current_user.present?
+    if current_librarian.present?
     else
-      redirect_to librarianhome_path      
+      redirect_to root_page      
     end
   end
   

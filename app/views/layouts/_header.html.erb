@@ -8,7 +8,9 @@
     <div>
       <a class="navbar-brand  " href="">Library Management System</a>
     </div>
-  <%if current_user %>
+
+
+  <%if current_librarian %>
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -21,11 +23,11 @@
     </div>
   </div>
     <a class="navbar-brand  " href="/home_page">Home</a>
-    <a class="navbar-brand  pull-right" href="/logout">Logout</a>
+     <%= link_to "Sign out", destroy_librarian_session_path, :method => :delete ,class:"  navbar-brand  float-end"%>
     <%= link_to "View profile", current_user_profile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
   <% else %>
-    <a class="navbar-brand  pull-" href="/signup">signup</a>
-    <a class="navbar-brand  pull-right" href="/login">Login</a>
+    <%= link_to "Sign up", new_librarian_registration_path,class:"  navbar-brand  float-end"%>
+  <%= link_to "Log In", new_librarian_session_path,class:"  navbar-brand  float-end"%>
   <% end %>
   </nav>
   </head>

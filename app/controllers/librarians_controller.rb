@@ -1,6 +1,8 @@
 class LibrariansController < ApplicationController
   before_action :validates, only: [ :index, :current_user_profile, :home_page]
   before_action :librarian_validates, only: [:new_librarian, :history]
+  before_action :authenticate_librarian!
+  
   def index
     @librarian = Librarian.all
   end
@@ -17,6 +19,10 @@ class LibrariansController < ApplicationController
 
   def new_librarian
     @new_librarian = Librarian.new
+    if @new_librarian.save
+      flash[:notice]="Account Create successful"
+      redirect_to root_page_path
+    end
   end
 
   def history
@@ -51,7 +57,7 @@ class LibrariansController < ApplicationController
   private
 
   def validates
-    if current_user.present?
+    if current_librarian.present?
     else
       redirect_to home_page_path
     end

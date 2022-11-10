@@ -1,18 +1,18 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
-  helper_method :check_user
+  helper_method :check_student
   helper_method :check_librarian
-
-  def current_user
-    @current_user ||= Librarian.find(session[:librarian_id]) if session[:librarian_id] 
-  end
-
-  def check_user
-    @check_user  ||= current_user.usertype =="Student"
+  def check_student
+    @check_student  ||= current_librarian.usertype =="student"
   end
 
   def check_librarian
-    @check_librarian  ||= current_user.usertype =="librarian"
+    @check_librarian  ||= current_librarian.usertype =="librarian"
   end
   
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :usertype])
+  end
 end

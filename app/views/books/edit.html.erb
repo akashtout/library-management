@@ -1,4 +1,4 @@
-<%if current_user %>
+<%if current_librarian %>
   <h1 class="text-success">Edit Book Details</h1>
   <%= render partial: "form" %> <br>
   <%= link_to 'Back to Home',books_path, class: "btn btn-outline-dark" %>

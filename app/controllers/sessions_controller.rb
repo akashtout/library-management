@@ -14,10 +14,10 @@ class SessionsController < ApplicationController
         flash[:notice]="Invalid Email or Password"
         redirect_to '/login'
       end
-  else
-    flash[:notice]="Invalid Email or Password"
-    redirect_to '/login'
-  end
+    else
+      flash[:notice]="Invalid Email or Password"
+      redirect_to '/login'
+    end
   end
 
   def destroy

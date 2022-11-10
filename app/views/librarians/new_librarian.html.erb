@@ -6,9 +6,9 @@
       <%= label_tag 'Name'%><br>         
       <%= fr.text_field :name, :placeholder => "name" %><br>
       <%= label_tag 'Email'%><br>
-      <%= fr.email_field :email, :placeholder => "Email" %><br>
+      <%= fr.email_field :email, :placeholder => "Email" %>
       <%= label_tag 'Password'%><br>
-      <%= fr.password_field :password, :placeholder => "Password" %><br>
+      <%= fr.password_field :encrypted_password, :placeholder => "Password" %><br>
       <%= fr.hidden_field :usertype, value: 'librarian' %><br>
       <%= fr.submit "Submit", class: "btn-submit" %>
       <% end %><br>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :librarians, controllers: { sessions: 'librarians/sessions' }
+
   delete '/books/:id' => 'books#destroy', as: 'destroy'
   post '/borrowcreate' => 'borrows#create'
   get '/requestedbook' => 'borrows#requestedbook'

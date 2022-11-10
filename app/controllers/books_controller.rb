@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :librarian_validates, only: [ :index, :trashbin, :recover, :new, :create, :edit, :destroy, :update]
+  before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update]
   before_action :student_validates, only: [:studentindex]
   
   def index
@@ -25,6 +25,7 @@ class BooksController < ApplicationController
   end
 
   def create
+ 
     params[:book_count].to_i.times do |i|
       @book = Book.new(book_params)
       if @book.save
@@ -85,7 +86,7 @@ class BooksController < ApplicationController
   end
 
   def student_validates
-    if check_user.present?
+    if check_student.present?
     else
       redirect_to home_page_path
     end
