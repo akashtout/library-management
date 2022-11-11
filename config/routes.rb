@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :librarians, controllers: { sessions: 'librarians/sessions' }
+  devise_for :librarians, controllers: { sessions: 'librarians/sessions', registrations: "librarians/registrations" }
 
   delete '/books/:id' => 'books#destroy', as: 'destroy'
   post '/borrowcreate' => 'borrows#create'
@@ -24,9 +24,10 @@ Rails.application.routes.draw do
   
   root "librarians#root_page"
 
+  get '/new_user' => 'librarians#new_user'
+  delete '/librarians/:id' => 'librarians#destroy', as: 'destroy_user'
 
   get '/new_librarian' => 'librarians#new_librarian'
-  get '/home_page' => 'librarians#home_page'
   get '/current_user_profile' => 'librarians#current_user_profile'
   get '/index' => 'librarians#index'
   get '/signup' => 'librarians#new'
@@ -38,4 +39,5 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   resources :books
   resources :borrows
+  resources :librarians
 end

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update]
+  before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index]
   before_action :student_validates, only: [:studentindex]
   
   def index
@@ -25,14 +25,13 @@ class BooksController < ApplicationController
   end
 
   def create
- 
     params[:book_count].to_i.times do |i|
       @book = Book.new(book_params)
       if @book.save
       end
     end
     flash[:notice]="Book Create successful"
-    redirect_to home_page_path 
+    redirect_to root_page_path 
   end
 
   def trashbin
@@ -51,7 +50,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     respond_to do |format|
-      format.html {redirect_to home_page_path}
+      format.html {redirect_to root_page_path}
       format.js
     end
   end
@@ -81,14 +80,14 @@ class BooksController < ApplicationController
   def librarian_validates
     if check_librarian.present?
     else
-      redirect_to home_page_path
+      redirect_to root_page_path
     end
   end
 
   def student_validates
     if check_student.present?
     else
-      redirect_to home_page_path
+      redirect_to root_page_path
     end
   end
   

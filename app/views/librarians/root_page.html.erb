@@ -22,8 +22,8 @@
   <li> <%= link_to 'Available Books',studentindex_path, class:"btn btn-outline-success"%></li><br>
   <li> <%= link_to 'Borrowed Books',borrowbook_path , class:"btn btn-outline-success"%></li><br>
   <li> <%= link_to 'Requested Books',requestedbook_path, class:"btn btn-outline-success"%></li><br>
-
-  <% else %>
+  
+  <% elsif  check_librarian%>
   <h1 class="text-primary">Librarian Details</h1>
   <table class="table table-bordered">
     <thead class="thead-dark">
@@ -46,8 +46,11 @@
     <li> <%= link_to 'not return by Student', history_path, class:"btn btn-outline-success" %></li><br>
     <li> <%= link_to "View Return Book ", returnb_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal",remote:true}%></li><br>
     <li> <%= link_to "Add new book", new_book_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal", remote:true}%></li><br>
-    <li><%= link_to "Create New librarian", new_librarian_path, class: "btn btn-outline-success" %></li><br>
     <li><%= link_to "Overdue Date Book", overdue_date_book_path, class: "btn btn-outline-success" %></li><br>
+    <li> <%= link_to 'New User Request', new_user_path, class:"btn btn-outline-success"%></li><br>
+    <li> <%= link_to 'All Users', index_path, class:"btn btn-outline-success"%></li><br>
+  <% else %>
+    <h1>Please again visit! after sometime</h1>  
   <% end %>
 <% end %>
 

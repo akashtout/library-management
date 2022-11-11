@@ -93,14 +93,14 @@ class BorrowsController < ApplicationController
   def validates
     if check_librarian.present?
     else
-      redirect_to root_page
+      redirect_to root_page_path
     end
   end
 
   def student_validates
     if current_librarian.present?
     else
-      redirect_to root_page      
+      redirect_to root_page_path     
     end
   end
   

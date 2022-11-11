@@ -1,0 +1,7 @@
+<%if current_librarian %>
+  <h1 class="text-success">Make librarian & student</h1><br>
+    <%= form_for(@librarian) do |f| %>
+    <h3><%= f.select :usertype, ['student', 'librarian']%></h3><br>
+    <%= f.submit "Submit", class: "btn btn-outline-success" %>
+    <% end %>
+<% end %>    

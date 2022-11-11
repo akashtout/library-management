@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html>
-   <head>
-    <title>libraryapp</title>
-   
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= javascript_include_tag 'jquery.js' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-   
-   </head>
-   <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-   </body>
+<head>
+  <title>libraryapp</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= javascript_include_tag 'jquery.js' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <%= yield %>
+  <p class="alert"><%= alert %></p>
+</body>
 </html>
