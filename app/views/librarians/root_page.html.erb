@@ -47,10 +47,9 @@
     <li> <%= link_to "View Return Book ", returnb_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal",remote:true}%></li><br>
     <li> <%= link_to "Add new book", new_book_path,class:"btn btn-outline-success",data:{'toggle' => "modal", 'target' =>"#myModal", remote:true}%></li><br>
     <li><%= link_to "Overdue Date Book", overdue_date_book_path, class: "btn btn-outline-success" %></li><br>
-    <li> <%= link_to 'New User Request', new_user_path, class:"btn btn-outline-success"%></li><br>
     <li> <%= link_to 'All Users', index_path, class:"btn btn-outline-success"%></li><br>
   <% else %>
-    <h1>Please again visit! after sometime</h1>  
+    <h1>Please again visit after sometime!</h1>  
   <% end %>
 <% end %>
 

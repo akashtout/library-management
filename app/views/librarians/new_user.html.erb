@@ -5,7 +5,8 @@
     <th>Name</th>
     <th>Email</th>
     <th>Usertype</th>
-    <th>Make</th>
+    <th>Select as</th>
+    <th>Select as</th>
     <th>Delete</th>
   </tr>
   </thead>
@@ -15,7 +16,8 @@
       <td><%= link_to l.name%></td>
       <td><%= link_to l.email %></td>
       <td><%= link_to l.usertype%></td>
-      <td><%= link_to  'Create', edit_librarian_path(l) ,class:"btn btn-outline-success"%></td>
+      <td><%= link_to  'Librarian', make_librarian_path(l), method: :patch,class:"btn btn-outline-success"%></td>
+      <td><%= link_to  'Student', make_student_path(l), method: :patch,class:"btn btn-outline-success"%></td>
       <td><%= link_to  'Delete', destroy_user_path(l), method: :delete,class:"btn btn-outline-danger"%></td>
     </tr>
     <% end %>

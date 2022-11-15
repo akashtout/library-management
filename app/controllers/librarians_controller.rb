@@ -7,10 +7,6 @@ class LibrariansController < ApplicationController
     @librarian = Librarian.all
   end
 
-  def new_user
-    @librarian = Librarian.where(usertype: 'Nil')    
-  end
-
   def root_page
   end
 
@@ -38,11 +34,11 @@ class LibrariansController < ApplicationController
     @librarian = Librarian.find(params[:id])
   end
 
- def destroy
+  def destroy
     @librarian = Librarian.find(params[:id])
     @librarian.destroy
     redirect_to root_page_path
-end
+  end
 
   def show
     @librarian = Librarian.find(params[:id])  

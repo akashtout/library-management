@@ -24,8 +24,10 @@ Rails.application.routes.draw do
   
   root "librarians#root_page"
 
-  get '/new_user' => 'librarians#new_user'
+  # get '/new_user' => 'librarians#new_user'
   delete '/librarians/:id' => 'librarians#destroy', as: 'destroy_user'
+  # patch '/make_student/:id' => 'librarians#make_student', as: 'make_student'
+  # patch '/make_librarian/:id' => 'librarians#make_librarian', as: 'make_librarian'
 
   get '/new_librarian' => 'librarians#new_librarian'
   get '/current_user_profile' => 'librarians#current_user_profile'
