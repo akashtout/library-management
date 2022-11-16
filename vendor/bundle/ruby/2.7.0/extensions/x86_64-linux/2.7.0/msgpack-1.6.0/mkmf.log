@@ -76,7 +76,7 @@ checked program was:
 /* end */
 
 "gcc -o conftest -I/home/vk/.rvm/rubies/ruby-2.7.2/include/ruby-2.7.0/x86_64-linux -I/home/vk/.rvm/rubies/ruby-2.7.2/include/ruby-2.7.0/ruby/backward -I/home/vk/.rvm/rubies/ruby-2.7.2/include/ruby-2.7.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/vk/.rvm/rubies/ruby-2.7.2/lib -Wl,-rpath,/home/vk/.rvm/rubies/ruby-2.7.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,'/../lib' -Wl,-rpath,'/../lib' -lruby  -lm   -lc"
-/tmp/ccwLqNaX.o: In function `t':
+/tmp/ccA5ThPC.o: In function `t':
 /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/msgpack-1.6.0/ext/msgpack/conftest.c:17: undefined reference to `rb_enc_interned_str'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -137,7 +137,7 @@ checked program was:
 /* end */
 
 "gcc -o conftest -I/home/vk/.rvm/rubies/ruby-2.7.2/include/ruby-2.7.0/x86_64-linux -I/home/vk/.rvm/rubies/ruby-2.7.2/include/ruby-2.7.0/ruby/backward -I/home/vk/.rvm/rubies/ruby-2.7.2/include/ruby-2.7.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/vk/.rvm/rubies/ruby-2.7.2/lib -Wl,-rpath,/home/vk/.rvm/rubies/ruby-2.7.2/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,'/../lib' -Wl,-rpath,'/../lib' -lruby  -lm   -lc"
-/tmp/ccMjY7uc.o: In function `t':
+/tmp/cc7lPR6I.o: In function `t':
 /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/msgpack-1.6.0/ext/msgpack/conftest.c:17: undefined reference to `rb_hash_new_capa'
 collect2: error: ld returned 1 exit status
 checked program was:

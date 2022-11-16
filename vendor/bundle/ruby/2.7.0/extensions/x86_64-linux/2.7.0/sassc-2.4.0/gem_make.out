@@ -1,5 +1,5 @@
 current directory: /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-/home/vk/.rvm/rubies/ruby-2.7.2/bin/ruby -I /home/vk/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20221006-30809-dg2mxr.rb extconf.rb
+/home/vk/.rvm/rubies/ruby-2.7.2/bin/ruby -I /home/vk/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20221116-26216-83kuo1.rb extconf.rb
 creating Makefile
 
 current directory: /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
@@ -77,4 +77,4 @@ linking shared-object sassc/libsass.so
 
 current directory: /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
 make "DESTDIR=" install
-/usr/bin/install -m 0755 libsass.so ./.gem.20221006-30809-uhzdcb/sassc
+/usr/bin/install -m 0755 libsass.so ./.gem.20221116-26216-qomsha/sassc

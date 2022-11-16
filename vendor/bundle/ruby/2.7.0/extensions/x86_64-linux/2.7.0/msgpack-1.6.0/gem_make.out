@@ -1,5 +1,5 @@
 current directory: /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/msgpack-1.6.0/ext/msgpack
-/home/vk/.rvm/rubies/ruby-2.7.2/bin/ruby -I /home/vk/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20221006-30809-11mhi1l.rb extconf.rb
+/home/vk/.rvm/rubies/ruby-2.7.2/bin/ruby -I /home/vk/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20221116-26216-1u7ftc8.rb extconf.rb
 checking for ruby/st.h... yes
 checking for st.h... yes
 checking for rb_enc_interned_str() in ruby.h... no
@@ -27,4 +27,4 @@ linking shared-object msgpack/msgpack.so
 
 current directory: /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/msgpack-1.6.0/ext/msgpack
 make "DESTDIR=" install
-/usr/bin/install -m 0755 msgpack.so ./.gem.20221006-30809-12ki8z9/msgpack
+/usr/bin/install -m 0755 msgpack.so ./.gem.20221116-26216-fspugu/msgpack
