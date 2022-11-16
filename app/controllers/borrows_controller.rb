@@ -98,10 +98,13 @@ class BorrowsController < ApplicationController
   end
 
   def student_validates
-    if current_librarian.present?
-    else
-      redirect_to root_page_path     
+    unless current_librarian.present?
+      redirect_to root_page_path
     end
+    # if current_librarian.present?
+    # else
+    #   redirect_to root_page_path     
+    # end
   end
   
   def borrow_params

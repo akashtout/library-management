@@ -46,9 +46,6 @@ import { Tooltip, Popover } from "bootstrap"
 // The stylesheet location we created earlier
 require("../stylesheets/application.scss")
 
-
-
-
 $(document).ready(function(){
  	$("#librarian_usertype").change('change', some_function)
  	
@@ -57,13 +54,10 @@ $(document).ready(function(){
  		let val = $("#librarian_usertype").val()
  		/*alert(val);*/
  		if( val == "librarian"){
- 			$('.addfield').append('<input type="number" id="add_field_l" name="college_code" placeholder="Enter college code" />');
-/* 				$('#add_field_s').remove();	
-*/     	/*var input = +$("#inputid").val();*/
+ 			$('.addfield').append('<input type="number" id="add_field" name="college_code" placeholder="Enter college code" />');
     }
     else{
-/*    	$('.addfield').append('<input type="number" id="add_field_s" name="student_code" placeholder="Enter student code" />');	
-*/    	$('#add_field_l').remove();
+    	$('#add_field').remove();
     }
   }
 

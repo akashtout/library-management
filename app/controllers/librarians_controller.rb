@@ -80,10 +80,13 @@ class LibrariansController < ApplicationController
   end
 
   def librarian_validates
-    if check_librarian.present?
-    else
+    unless check_librarian.present?
       redirect_to root_page_path
     end
+    # if check_librarian.present?
+    # else
+    #   redirect_to root_page_path
+    # end
   end
 
   def librarian_params

@@ -85,10 +85,13 @@ class BooksController < ApplicationController
   end
 
   def student_validates
-    if check_student.present?
-    else
+    unless check_student.present?
       redirect_to root_page_path
     end
+    # if check_student.present?
+    # else
+    #   redirect_to root_page_path
+    # end
   end
   
   def book_params
