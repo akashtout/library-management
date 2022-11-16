@@ -2,6 +2,12 @@ class BooksController < ApplicationController
   before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index]
   before_action :student_validates, only: [:studentindex]
   
+  def csv_download
+    respond_to do |format|
+      format.csv { send_data Book.to_csv, filename: "books-#{Date.today}.csv" }
+    end
+  end
+
   def index
     if params[:search_key]
       @books = Book.where("title LIKE ? OR author_name LIKE ? ", 

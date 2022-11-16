@@ -5,6 +5,8 @@
   </form>
   </div><br>
 
+  <%= button_to "Download CSV", download_path(request.params.merge(format: :csv)), data: {turbo: :false},class:"btn btn-outline-success" %><br>
+
   <h1 class="text-success">Availabe Books</h1>
   <table class="table table-bordered">
   <thead  class="thead-dark">

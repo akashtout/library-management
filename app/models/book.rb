@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+  include ExportCsv
   acts_as_paranoid 
   belongs_to :author
   has_many :borrows, dependent: :destroy
