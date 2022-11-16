@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :librarians, controllers: { sessions: 'librarians/sessions', registrations: "librarians/registrations" }
 
   post '/books/csv_download', to: 'books#csv_download',as: :download
+  get 'books/insert_data' => 'books#insert_data'
+  post 'books/create_book' => 'books#create_book'
 
   delete '/books/:id' => 'books#destroy', as: 'destroy'
   post '/borrowcreate' => 'borrows#create'

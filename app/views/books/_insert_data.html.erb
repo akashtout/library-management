@@ -1,0 +1,10 @@
+<div  class="text-center">
+<h1 class="text-primary">Insert Books</h1>
+<%= form_for @book, url: books_create_book_path do |f| %>
+	<div class="form-group">
+		<%= f.label :file, "Upload CSV File" %>
+	  <%= f.file_field :file, class: 'form-control-file', required: true %>
+	</div><br>
+  <%= f.submit "Submit", class: "btn btn-outline-success" %>   
+<% end %>
+</div>

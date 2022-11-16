@@ -1,10 +1,25 @@
 class BooksController < ApplicationController
-  before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index]
+  before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index, :insert_data, :create_book, :csv_download]
   before_action :student_validates, only: [:studentindex]
   
+  def insert_data
+    @book = Book.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def create_book
+    # binding.pry
+    Book.import(params[:book][:file])
+    flash[:notice] = "Books uploaded successfully"
+    redirect_to root_page_path
+  end
+
   def csv_download
     respond_to do |format|
-      format.csv { send_data Book.to_csv, filename: "books-#{Date.today}.csv" }
+      format.csv { send_data Book.to_csv, filename: "books_data-#{Date.today}.csv" }
     end
   end
 
