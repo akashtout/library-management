@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_09_072120) do
+ActiveRecord::Schema.define(version: 2022_11_10_060606) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2022_11_09_072120) do
     t.string "author_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "librarian_id"
     t.datetime "deleted_at"
+    t.integer "librarian_id"
     t.index ["deleted_at"], name: "index_books_on_deleted_at"
   end
 
@@ -61,7 +61,12 @@ ActiveRecord::Schema.define(version: 2022_11_09_072120) do
     t.string "usertype"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_librarians_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_librarians_on_reset_password_token", unique: true
   end
 
   create_table "libraries", force: :cascade do |t|
@@ -78,7 +83,6 @@ ActiveRecord::Schema.define(version: 2022_11_09_072120) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "books", "librarians"
   add_foreign_key "borrows", "books"
   add_foreign_key "borrows", "books"
 end
