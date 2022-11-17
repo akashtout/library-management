@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'cancancan'
 gem 'devise'
 gem 'pry', '~> 0.13.1'
 gem "figaro"

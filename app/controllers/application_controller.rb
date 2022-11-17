@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   helper_method :check_student
   helper_method :check_librarian
+
+  private
+  
   def check_student
     @check_student  ||= current_librarian.usertype =="student"
   end

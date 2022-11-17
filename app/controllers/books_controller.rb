@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
-  before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index, :insert_data, :create_book, :csv_download]
+  #before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index, :insert_data, :create_book, :csv_download]
   before_action :student_validates, only: [:studentindex]
+  load_and_authorize_resource
   
   def insert_data
     @book = Book.new
@@ -31,6 +32,7 @@ class BooksController < ApplicationController
       @books = Book.all
     end
   end
+
   def studentindex
     borrow_id = Borrow.all.pluck(:book_id)
     @book = Book.where.not(id: borrow_id)
@@ -43,6 +45,7 @@ class BooksController < ApplicationController
       format.js
     end
   end
+
   def create
     params[:book_count].to_i.times do |i|
       @book = Book.new(book_params)
@@ -52,15 +55,19 @@ class BooksController < ApplicationController
     flash[:notice]="Book Create successful"
     redirect_to root_page_path 
   end
+
   def trashbin
     @book=Book.only_deleted
   end
+
   def show
     @book = Book.find(params[:id])
   end
+
   def edit
     @book = Book.find(params[:id])
   end
+
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
@@ -69,15 +76,18 @@ class BooksController < ApplicationController
       format.js
     end
   end
+
   def really_destroy
     @book = Book.only_deleted.first.destroy
     redirect_to trashbin_path
   end
+
   def recover
     if @book=Book.only_deleted.first.recover
       redirect_to trashbin_path
     end 
   end
+
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
@@ -86,6 +96,7 @@ class BooksController < ApplicationController
       render :edit
     end
   end
+
   private
   def librarian_validates
     if check_librarian.present?
