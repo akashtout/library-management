@@ -1,4 +1,4 @@
-<%if current_user %>
+<%if check_student %>
   <h1 class="text-primary">Borrowed Book</h1>
   <table class="table table-bordered">
     <thead class="thead-dark">
@@ -22,5 +22,5 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to 'Back',home_page_path,class:"btn btn-outline-dark" %>
+  <%= link_to 'Back',root_page_path,class:"btn btn-outline-dark" %>
 <% end %>

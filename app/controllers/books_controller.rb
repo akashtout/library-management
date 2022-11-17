@@ -1,7 +1,28 @@
 class BooksController < ApplicationController
-  before_action :librarian_validates, only: [ :index, :trashbin, :recover, :new, :create, :edit, :destroy, :update]
+  before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index, :insert_data, :create_book, :csv_download]
   before_action :student_validates, only: [:studentindex]
   
+  def insert_data
+    @book = Book.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def create_book
+    # binding.pry
+    Book.import(params[:book][:file])
+    flash[:notice] = "Books uploaded successfully"
+    redirect_to root_page_path
+  end
+
+  def csv_download
+    respond_to do |format|
+      format.csv { send_data Book.to_csv, filename: "books_data-#{Date.today}.csv" }
+    end
+  end
+
   def index
     if params[:search_key]
       @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
@@ -29,7 +50,7 @@ class BooksController < ApplicationController
       end
     end
     flash[:notice]="Book Create successful"
-    redirect_to home_page_path 
+    redirect_to root_page_path 
   end
   def trashbin
     @book=Book.only_deleted
@@ -44,7 +65,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     respond_to do |format|
-      format.html {redirect_to home_page_path}
+      format.html {redirect_to root_page_path}
       format.js
     end
   end
@@ -69,14 +90,17 @@ class BooksController < ApplicationController
   def librarian_validates
     if check_librarian.present?
     else
-      redirect_to home_page_path
+      redirect_to root_page_path
     end
   end
   def student_validates
-    if check_user.present?
-    else
-      redirect_to home_page_path
+    unless check_student.present?
+      redirect_to root_page_path
     end
+    # if check_student.present?
+    # else
+    #   redirect_to root_page_path
+    # end
   end
   
   def book_params

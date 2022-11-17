@@ -1,5 +1,5 @@
 current directory: /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.18/ext/mri
-/home/vk/.rvm/rubies/ruby-2.7.2/bin/ruby -I /home/vk/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20221006-6502-u5nnxi.rb extconf.rb
+/home/vk/.rvm/rubies/ruby-2.7.2/bin/ruby -I /home/vk/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0 -r ./siteconf20221116-26216-fnftcr.rb extconf.rb
 creating Makefile
 
 current directory: /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.18/ext/mri
@@ -23,4 +23,4 @@ linking shared-object bcrypt_ext.so
 
 current directory: /home/vk/rails_work/userapp/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.18/ext/mri
 make "DESTDIR=" install
-/usr/bin/install -m 0755 bcrypt_ext.so ./.gem.20221006-6502-6gt79x
+/usr/bin/install -m 0755 bcrypt_ext.so ./.gem.20221116-26216-1k1qqji

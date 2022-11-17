@@ -2,7 +2,11 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 
+
+require("jquery")
 require("jquery")     
 require("bootstrap")
 require("turbolinks").start()
@@ -24,15 +28,9 @@ var jQuery = require('jquery')
 
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
+//= require rails-ujs
 
-//= require bootstrap-sprockets
-//= require jquery-ui
-//= require jquery
-//= require jquery_ujs
-//= require popper
-//= require turbolinks
-//= require bootstrap
-//= require_tree.
+
 
 Rails.start()
 Turbolinks.start()
@@ -48,4 +46,23 @@ import { Tooltip, Popover } from "bootstrap"
 // The stylesheet location we created earlier
 require("../stylesheets/application.scss")
 
+$(document).ready(function(){
+ 	$("#librarian_usertype").change('change', some_function)
+ 	
+ 	function some_function(e){
+ 		e.preventDefault();
+ 		let val = $("#librarian_usertype").val()
+ 		/*alert(val);*/
+ 		if( val == "librarian"){
+ 			$('.addfield').append('<input type="number" id="add_field" name="college_code" placeholder="Enter college code" />');
+    }
+    else{
+    	$('#add_field').remove();
+    }
+  }
+
+});
+
+
+ 
 

@@ -2,10 +2,12 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
+
+gem 'devise'
 gem 'pry', '~> 0.13.1'
 gem "figaro"
 gem 'acts_as_paranoid'
-gem 'sprockets-rails', :require => 'sprockets/railtie'
+
 gem 'bootstrap-sass'
 gem 'bootstrap'
 gem 'jquery-rails'

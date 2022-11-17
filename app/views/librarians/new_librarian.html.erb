@@ -4,15 +4,15 @@
       <h2><strong>Create New Librarian</strong></h2>
       <%= form_for(@new_librarian) do |fr| %>
       <%= label_tag 'Name'%><br>         
-      <%= fr.text_field :name, :placeholder => "name" %><br>
+      <%= fr.text_field :name, :placeholder => "name" %>
       <%= label_tag 'Email'%><br>
-      <%= fr.email_field :email, :placeholder => "Email" %><br>
+      <%= fr.email_field :email, :placeholder => "Email" %>
       <%= label_tag 'Password'%><br>
-      <%= fr.password_field :password, :placeholder => "Password" %><br>
-      <%= fr.hidden_field :usertype, value: 'librarian' %><br>
+      <%= fr.password_field :password, :placeholder => "Password" %>
+      <%= fr.hidden_field :usertype, value: 'librarian' %>
       <%= fr.submit "Submit", class: "btn-submit" %>
       <% end %><br>
-      <%= link_to 'Back to Home',home_page_path,class:"btn btn-outline-dark"%>
+      <%= link_to 'Back to Home',root_page_path,class:"btn btn-outline-dark"%>
     </div>
   </div>
 </div>
