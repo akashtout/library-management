@@ -78,7 +78,7 @@ class BooksController < ApplicationController
   end
 
   def really_destroy
-    @book = Book.only_deleted.first.destroy
+    RemoveBook.perform_async  
     redirect_to trashbin_path
   end
 
