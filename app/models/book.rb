@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   require 'csv'
+  paginates_per 10
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|

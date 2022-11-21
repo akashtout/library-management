@@ -33,13 +33,13 @@ class BooksController < ApplicationController
       @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
       "%#{params[:search_key]}%", "%#{params[:search_key]}%")
     else
-      @books = Book.all
+      @books = Book.all.page(params[:page])
     end
   end
 
   def studentindex
     borrow_id = Borrow.all.pluck(:book_id)
-    @book = Book.where.not(id: borrow_id)
+    @book = Book.where.not(id: borrow_id).page(params[:page])
   end
   
   def new
