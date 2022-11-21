@@ -1,6 +1,12 @@
 class BorrowsController < ApplicationController
-  before_action :student_validates, only: [:destroy, :requestedbook, :borrowbook]
+  #before_action :student_validates, only: [:destroy, :requestedbook, :borrowbook]
   before_action :validates, only: [:borrowshow, :showreturnbook, :overdue_date_book, :index]
+  #load_and_authorize_resource
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    render json: {warning: exception, status: "Authorization failed"}
+  end
+
   def index
     @borrow = Borrow.all
   end

@@ -1,6 +1,14 @@
 class Librarian < ApplicationRecord
   cattr_accessor :current_librarian
 
+  # ROLES = %w{admin student}
+
+  # ROLES.each do |user|
+  #   define_method "#{user}" do
+  #     usertype == user
+  #   end
+  # end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

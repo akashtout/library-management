@@ -1,8 +1,12 @@
 class BooksController < ApplicationController
-  #before_action :librarian_validates, only: [  :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index, :insert_data, :create_book, :csv_download]
-  before_action :student_validates, only: [:studentindex]
+  #before_action :librarian_validates, only: [ :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index, :insert_data, :create_book, :csv_download]
+  #before_action :student_validates, only: [:studentindex]
   load_and_authorize_resource
   
+  rescue_from CanCan::AccessDenied do |exception|
+    render json: {warning: exception, status: "Authorization failed"}
+  end
+
   def insert_data
     @book = Book.new
     respond_to do |format|

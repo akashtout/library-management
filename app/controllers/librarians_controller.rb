@@ -1,7 +1,12 @@
 class LibrariansController < ApplicationController
-  before_action :validates, only: [ :index, :current_user_profile]
-  before_action :librarian_validates, only: [:new_librarian, :history, :edit, :show, :destroy, :new_user, :index]
+  #before_action :validates, only: [ :current_user_profile]
+  #before_action :librarian_validates, only: [:new_librarian, :history, :edit, :show, :destroy, :new_user, :index]
   before_action :authenticate_librarian!
+  load_and_authorize_resource
+
+  rescue_from CanCan::AccessDenied do |exception|
+    render json: {warning: exception, status: "Authorization failed"}
+  end
   
   def index
     @librarian = Librarian.all
@@ -47,7 +52,7 @@ class LibrariansController < ApplicationController
   def create
     librarian = Librarian.new(librarian_params)
     if librarian.save
-      flash[:notice]="Acount Create successful"
+      flash[:notice]="Account Create successful"
       redirect_to '/'
     else
       redirect_to '/signup'
