@@ -8,7 +8,6 @@
       <div>
         <a class="navbar-brand  " href="">Library Management System</a>
       </div>
-
       <%if current_librarian %>
       <div class="modal" id="myModal">
         <div class="modal-dialog">
@@ -21,13 +20,13 @@
           </div>
         </div>
       </div>
-        <a class="navbar-brand  " href="/root_page">Home</a>
-        <%= link_to "Sign out", destroy_librarian_session_path, :method => :delete ,class:"  navbar-brand  float-end"%>
-        <%= link_to "View profile", current_user_profile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
-        <%= link_to 'Edit profile', edit_librarian_registration_path, :class => 'navbar-brand  float-end' %>
+      <a class="navbar-brand  " href="/root_page">Home</a>
+      <%= link_to "Sign out", destroy_librarian_session_path, :method => :delete ,class:"  navbar-brand  float-end"%>
+      <%= link_to "View profile", current_user_profile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
+      <%= link_to 'Edit profile', edit_librarian_registration_path, :class => 'navbar-brand  float-end' %>
       <% else %>
-        <%= link_to "Sign up", new_librarian_registration_path,class:"  navbar-brand  float-end"%>
-        <%= link_to "Log In", new_librarian_session_path,class:"  navbar-brand  float-end"%>
+      <%= link_to "Sign up", new_librarian_registration_path,class:"  navbar-brand  float-end"%>
+      <%= link_to "Log In", new_librarian_session_path,class:"  navbar-brand  float-end"%>
       <% end %>
     </nav>
   </head>

@@ -1,5 +1,22 @@
 <%if current_librarian %>
+<div  class="text-center">
   <h1 class="text-success">Edit Book Details</h1>
-  <%= render partial: "form" %> <br>
-  <%= link_to 'Back to Home',books_path, class: "btn btn-outline-dark" %>
+  <%= form_for(@book, :remote => true) do |f| %>
+  <%= label_tag 'title'%><br>  
+  <%= f.text_field :title, :placeholder => "title" %><br>
+  <%= label_tag 'price'%><br>
+  <%= f.number_field :price, :placeholder => "price" %><br>
+  <%= label_tag 'Description'%><br>
+  <%= f.text_field :description, :placeholder => "Description" %><br>
+  <%= label_tag 'Author id'%><br>
+  <%= f.number_field :author_id, :placeholder => "author_id" %><br>
+  <%= label_tag 'Author'%><br>
+  <%= f.text_field :author_name, :placeholder => "Author" %><br>
+  <%= f.hidden_field :librarian_id, value: current_librarian.id %>
+  <%= label_tag 'Set Profile image'%><br>
+  <%= f.file_field :image %></p>
+  <%= f.submit "Submit", class: "btn btn-outline-success" %>   
+  <% end %>
+</div>
+<%= link_to 'Back to Home',books_path, class: "btn btn-outline-dark" %>
 <% end %>

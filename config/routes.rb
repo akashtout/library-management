@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   devise_for :librarians, controllers: { sessions: 'librarians/sessions', registrations: "librarians/registrations" }
 
- # require 'sidekiq/web'
- #  mount Sidekiq::Web => '/sidekiq'
-
   post '/books/csv_download', to: 'books#csv_download',as: :download
   get 'books/insert_data' => 'books#insert_data'
   post 'books/create_book' => 'books#create_book'

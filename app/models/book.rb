@@ -1,6 +1,13 @@
 class Book < ApplicationRecord
   require 'csv'
+  include ExportCsv
   paginates_per 10
+  has_one_attached :image
+  acts_as_paranoid 
+  belongs_to :author
+  has_many :borrows, dependent: :destroy
+  belongs_to :librarian
+  validates :title,:price,:author_name,:author_id, presence: true
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
@@ -15,10 +22,4 @@ class Book < ApplicationRecord
     end
   end
 
-  include ExportCsv
-  acts_as_paranoid 
-  belongs_to :author
-  has_many :borrows, dependent: :destroy
-  belongs_to :librarian
-  validates :title,:price,:author_name,:author_id, presence: true
 end
