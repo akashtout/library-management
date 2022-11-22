@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :set_book , only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
   rescue_from CanCan::AccessDenied do |exception|
     render json: {warning: exception, status: "Authorization failed"}
@@ -62,15 +63,12 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
   end
 
   def edit
-    @book = Book.find(params[:id])
   end
 
   def destroy
-    @book = Book.find(params[:id])
     @book.destroy
     respond_to do |format|
       format.html {redirect_to root_page_path}
@@ -90,7 +88,6 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find(params[:id])
     if @book.update(book_params)
       redirect_to @book
     else
@@ -99,6 +96,10 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def set_book
+    @book = Book.find(params[:id])
+  end
   
   def book_params
     params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :search_key, :image)

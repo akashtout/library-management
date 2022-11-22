@@ -1,5 +1,7 @@
   class BorrowsController < ApplicationController
     before_action :validates, only: [:borrowshow, :showreturnbook, :overdue_date_book, :index]
+    before_action :set_borrow , only: [:show, :accept, :destroy, :reject, :returnbook]
+
     rescue_from CanCan::AccessDenied do |exception|
       render json: {warning: exception, status: "Authorization failed"}
     end
@@ -13,18 +15,24 @@
     end
 
     def create
-      @borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
-        student: current_librarian.name, status: false, returndate: "2022-11-08".to_date)
-      if @borrow.save
-        respond_to do |format|
-          format.html 
-          format.js 
+      #binding.pry
+      if Borrow.where(status: false, book_id: params[:book_id]).present?
+        respond_to root_page_path
+      else
+        @borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
+          student: current_librarian.name, status: false, returndate: "2022-11-08".to_date)
+        if @borrow.save
+          respond_to do |format|
+            format.html 
+            format.js 
+          end
         end
       end
     end
 
+
+
     def show
-      @borrow = Borrow.find(params[:id])
     end
 
     def overdue_date_book
@@ -55,7 +63,6 @@
     end
 
     def accept
-      @borrow = Borrow.find(params[:id])
       @borrow.update(status: true)
       respond_to do |format|
         format.html {redirect_to borrowshow_path}
@@ -64,7 +71,6 @@
     end
 
     def reject
-      @borrow = Borrow.find(params[:id])
       @borrow.destroy
       respond_to do |format|
         format.js
@@ -72,7 +78,6 @@
     end
 
     def returnbook
-      @borrow = Borrow.find(params[:id])
       @borrow.update(status: nil)
       respond_to do |format|
         format.html {redirect_to borrowbook_path}
@@ -84,7 +89,6 @@
     end
 
     def destroy
-      @borrow = Borrow.find(params[:id])
       @borrow.destroy
       respond_to do |format|
         format.js 
@@ -92,6 +96,10 @@
     end
 
     private
+
+    def set_borrow
+      @borrow = Borrow.find(params[:id])
+    end
 
     def validates
       if check_librarian.present?

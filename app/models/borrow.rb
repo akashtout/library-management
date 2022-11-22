@@ -1,6 +1,9 @@
 class Borrow < ApplicationRecord
   belongs_to :librarian
   belongs_to :book
+   
+  validates_presence_of :book_id 
+  validates :librarian_id , presence: true
   scope :showrequestedbook, -> { where(status: false) }
   scope :returnsbook, -> { where(status: nil) }
   scope :borrowbooks, ->(librarian) { where(student: librarian.name,status: true)}

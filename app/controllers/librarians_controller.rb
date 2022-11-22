@@ -1,5 +1,6 @@
 class LibrariansController < ApplicationController
   before_action :authenticate_librarian!
+  before_action :set_librarian , only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
   rescue_from CanCan::AccessDenied do |exception|
     render json: {warning: exception, status: "Authorization failed"}
@@ -33,17 +34,17 @@ class LibrariansController < ApplicationController
   end
 
   def edit
-    @librarian = Librarian.find(params[:id])
+    #@librarian = Librarian.find(params[:id])
   end
 
   def destroy
-    @librarian = Librarian.find(params[:id])
+    #@librarian = Librarian.find(params[:id])
     @librarian.destroy
     redirect_to root_page_path
   end
 
   def show
-    @librarian = Librarian.find(params[:id])  
+    #@librarian = Librarian.find(params[:id])  
   end
 
   def create
@@ -64,7 +65,7 @@ class LibrariansController < ApplicationController
   end
 
   def update
-    @librarian = Librarian.find(params[:id])
+    #@librarian = Librarian.find(params[:id])
     if @librarian.update(librarian_params)
       redirect_to root_page_path
     else
@@ -73,6 +74,10 @@ class LibrariansController < ApplicationController
   end
 
   private
+
+  def set_librarian
+    @librarian = Librarian.new(librarian_params)    
+  end
 
   def librarian_params
     params.require(:librarian).permit(:name, :email, :password, :usertype, :search_key)
