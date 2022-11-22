@@ -1,8 +1,5 @@
 class BooksController < ApplicationController
-  #before_action :librarian_validates, only: [ :trashbin, :recover, :new, :create, :edit, :destroy, :update, :index, :insert_data, :create_book, :csv_download]
-  #before_action :student_validates, only: [:studentindex]
   load_and_authorize_resource
-  
   rescue_from CanCan::AccessDenied do |exception|
     render json: {warning: exception, status: "Authorization failed"}
   end
@@ -31,7 +28,7 @@ class BooksController < ApplicationController
   def index
     if params[:search_key]
       @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
-      "%#{params[:search_key]}%", "%#{params[:search_key]}%")
+        "%#{params[:search_key]}%", "%#{params[:search_key]}%")
     else
       @books = Book.all.page(params[:page])
     end
@@ -102,21 +99,6 @@ class BooksController < ApplicationController
   end
 
   private
-  def librarian_validates
-    if check_librarian.present?
-    else
-      redirect_to root_page_path
-    end
-  end
-  def student_validates
-    unless check_student.present?
-      redirect_to root_page_path
-    end
-    # if check_student.present?
-    # else
-    #   redirect_to root_page_path
-    # end
-  end
   
   def book_params
     params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :search_key, :image)

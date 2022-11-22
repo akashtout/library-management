@@ -1,13 +1,10 @@
 class LibrariansController < ApplicationController
-  #before_action :validates, only: [ :current_user_profile]
-  #before_action :librarian_validates, only: [:new_librarian, :history, :edit, :show, :destroy, :new_user, :index]
   before_action :authenticate_librarian!
   load_and_authorize_resource
-
   rescue_from CanCan::AccessDenied do |exception|
     render json: {warning: exception, status: "Authorization failed"}
   end
-  
+
   def index
     @librarian = Librarian.all
   end
@@ -29,7 +26,7 @@ class LibrariansController < ApplicationController
   def history
     if params[:search_key]
       @history = Borrow.where("librarian_id LIKE ? OR student LIKE ? ", 
-      "%#{params[:search_key]}%", "%#{params[:search_key]}%")
+        "%#{params[:search_key]}%", "%#{params[:search_key]}%")
     else
       @history=Borrow.where(status:'true')
     end
@@ -77,25 +74,8 @@ class LibrariansController < ApplicationController
 
   private
 
-  def validates
-    if current_librarian.present?
-    else
-      redirect_to root_page_path
-    end
-  end
-
-  def librarian_validates
-    unless check_librarian.present?
-      redirect_to root_page_path
-    end
-    # if check_librarian.present?
-    # else
-    #   redirect_to root_page_path
-    # end
-  end
-
   def librarian_params
     params.require(:librarian).permit(:name, :email, :password, :usertype, :search_key)
   end
-  
+
 end

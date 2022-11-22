@@ -1,23 +1,23 @@
 <%if current_librarian %>
-  <h1 class="text-primary">Return Books</h1>
-  <table class="table table-bordered">
-    <thead class="thead-dark">
-      <tr>
-     	  <th> Student Id </th>
-        <th> Book Id </th>
-        <th> Return Date </th>
-        <th>Return to library</th>
-      </tr>
-    </thead>
-    <% @showreturnbook.each do |rbs| %>
-    <tbody id="rejectrequest<%= rbs.id %>">
-      <tr>
-        <td><%= rbs.librarian_id%></td>
-        <td><%= rbs.book_id%></td>
- 	      <td><%=rbs.created_at.to_date%></td>
-        <td><%= link_to "Added to Library", reject_path(rbs),method: :delete, remote: true ,class:"btn btn-outline-success"%></td>
-      </tr>
-    </tbody>
-    <% end %>
-  </table> 
+<h1 class="text-primary">Return Books</h1>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th> Student Id </th>
+      <th> Book Id </th>
+      <th> Return Date </th>
+      <th>Return to library</th>
+    </tr>
+  </thead>
+  <% @showreturnbook.each do |rbs| %>
+  <tbody id="rejectrequest<%= rbs.id %>">
+    <tr>
+      <td><%= rbs.librarian_id%></td>
+      <td><%= rbs.book_id%></td>
+      <td><%=rbs.created_at.to_date%></td>
+      <td><%= link_to "Added to Library", reject_path(rbs),method: :delete, remote: true ,class:"btn btn-outline-success"%></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table> 
 <% end %>

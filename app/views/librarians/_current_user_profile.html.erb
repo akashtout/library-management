@@ -1,40 +1,40 @@
 <%if current_librarian%>
-  <%if check_student%>
-    <h1  class="text-primary">Student Details</h1>
-    <table class="table table-bordered">
-      <thead class="thead-dark">
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Usertype</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= current_librarian.name %></td>
-          <td><%= current_librarian.email %></td>
-          <td><%= current_librarian.usertype %></td>
-        </tr>
-      </tbody>
-    </table>
+<%if check_student%>
+<h1  class="text-primary">Student Details</h1>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Usertype</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= current_librarian.name %></td>
+      <td><%= current_librarian.email %></td>
+      <td><%= current_librarian.usertype %></td>
+    </tr>
+  </tbody>
+</table>
 
-  <% else %>
-    <h1 class="text-primary">Librarian Details</h1>
-    <table class="table table-bordered">
-      <thead class="thead-dark">
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Usertype</th>
-        </tr>
-      </thead>
-    <tbody>
-      <tr>
-        <td><%= current_librarian.name %></td>
-        <td><%= current_librarian.email %></td>
-        <td><%= current_librarian.usertype %></td>
-      </tr>
-    </tbody>
-    </table>
-  <% end %>
+<% else %>
+<h1 class="text-primary">Librarian Details</h1>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Usertype</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= current_librarian.name %></td>
+      <td><%= current_librarian.email %></td>
+      <td><%= current_librarian.usertype %></td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
 <% end %>

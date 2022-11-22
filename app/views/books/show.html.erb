@@ -1,30 +1,31 @@
 <%if current_librarian %>
-  <h1  class="text-success"><strong>Details Of Book</strong></h1>
-  <% if @book.image.attached? %>
-  <%= image_tag @book.image.variant(resize: "300x300") %>
-  <% end %>
+<h1  class="text-success"><strong>Details Of Book</strong></h1><br>
+<% if @book.image.attached? %>
+<h3  class="text-success"><strong>Book image</strong></h3>
+<%= image_tag @book.image.variant(resize: "300x300") %>
+<% end %>
 
-  <table class="table table-bordered">
-    <thead class="thead-dark">
-      <tr>
-        <th>Title</th><br>
-        <th>Price</th><br>
-        <th>Description</th>
-        <th>Author name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @book.title %></td>
-        <td><%= @book.price %></td>
-        <td><%= @book.description %></td>
-        <td><%= @book.author_name %></td>
-      </tr>
-    </tbody>
-  </table>
-  <%if check_librarian %>
-  <%= link_to 'Back to Home',books_path,class:"btn btn-dark"%>
-  <% else %>
-  <%= link_to 'Back to Home',root_page_path,class:"btn btn-dark"%>
-  <% end %>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>Title</th><br>
+      <th>Price</th><br>
+      <th>Description</th>
+      <th>Author name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @book.title %></td>
+      <td><%= @book.price %></td>
+      <td><%= @book.description %></td>
+      <td><%= @book.author_name %></td>
+    </tr>
+  </tbody>
+</table>
+<%if check_librarian %>
+<%= link_to 'Back to Home',books_path,class:"btn btn-outline-dark"%>
+<% else %>
+<%= link_to 'Back to Home',root_page_path,class:"btn btn-outline-dark"%>
+<% end %>
 <% end %>

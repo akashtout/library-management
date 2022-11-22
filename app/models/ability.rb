@@ -1,29 +1,19 @@
 # frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
   def initialize(librarian)
-   
-
-  # can :manage, :all if librarian.usertype == "librarian"
-  # can :studentindex, Book if librarian.usertype == "student"
-
-
-if librarian.usertype == "librarian"
-  can :read, :all
-  can :manage, :all
-  cannot :studentindex, Book
-  cannot [:requestedbook, :borrowbook], Borrow
-else
-  can :manage, :all
-  cannot [:borrowshow, :overdue_date_book], Borrow #if librarian.usertype == "student"
-  cannot [:index,:trashbin], Book #if librarian.usertype == "student"
-  cannot [:index, :history, :edit, :show, :destroy], Librarian #if librarian.usertype == "student"
-end
-
-
-
+    if librarian.usertype == "librarian"
+      can :read, :all
+      can :manage, :all
+      cannot :studentindex, Book
+      cannot [:requestedbook, :borrowbook], Borrow
+    else
+      can :manage, :all
+      cannot [:borrowshow, :overdue_date_book], Borrow
+      cannot [:index,:trashbin], Book
+      cannot [:index, :history, :edit, :show, :destroy], Librarian
+    end
     #   return unless user.admin?
     #   can :manage, :all
     #

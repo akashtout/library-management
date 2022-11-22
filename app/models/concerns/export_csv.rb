@@ -8,7 +8,6 @@ module ExportCsv
 
       CSV.generate(headers: true, **options) do |csv|
         csv << headers
-
         all.each do |book|
           csv << [book.id, book.title, book.price, book.description, book.author_id, book.author_name, book.librarian_id]
         end

@@ -1,25 +1,25 @@
 <%if current_librarian %>
-  <h1  class="text-success"><strong>Details Of request book from Student</strong></h1>
-  <table class="table table-bordered">
-    <thead class="thead-dark">
-      <tr>
-        <th>librarian_id</th>
-        <th>book_id</th>
-        <th>Student</th>
-        <th>status</th>
-        <th>usertype</th>
-      </tr>
-    </thead>
-    <tbody>
+<h1  class="text-success"><strong>Details Of request book from Student</strong></h1>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>librarian_id</th>
+      <th>book_id</th>
+      <th>Student</th>
+      <th>status</th>
+      <th>usertype</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @borrow.each do |b| %>
-      <tr>
-        <td><%= b.librarian_id %></td>
-        <td><%= b.book_id %></td>
-        <td><%= b.student %></td>
-        <td><%= b.status %></td>
-        <td><%= b.usertype %></td>
-      </tr>
+    <tr>
+      <td><%= b.librarian_id %></td>
+      <td><%= b.book_id %></td>
+      <td><%= b.student %></td>
+      <td><%= b.status %></td>
+      <td><%= b.usertype %></td>
+    </tr>
     <% end %>
-    </tbody>
-  </table>
+  </tbody>
+</table>
 <% end %>    

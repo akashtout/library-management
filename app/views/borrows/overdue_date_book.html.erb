@@ -1,26 +1,26 @@
 <%if check_librarian %>
-  <h1 class="text-primary">Overdue Date Books</h1>
-  <table class="table table-bordered">
-	  <thead class="thead-dark">
-	    <tr>
-	   	  <th>Student Id</th>
-	      <th>book Id</th>
-	      <th>Student name</th>
-	      <th>Issued Date</th>
-	      <th>Return Date</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	 	  <% @overdue_date_book.each do |v| %>
-	    <tr>
-	 	    <td><%= v.librarian_id %></td>
-	      <td><%= v.book_id%></td>
-	      <td><%= v.student%></td>
-	      <td><%= v.created_at.to_date%></td>
-	      <td><%= v.returndate%></td>
-	    </tr>
-	    <% end %>
-	  </tbody>
-  </table>
-  <%= link_to 'Back',root_page_path,class:"btn btn-outline-dark"%>
+<h1 class="text-primary">Overdue Date Books</h1>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>Student Id</th>
+      <th>book Id</th>
+      <th>Student name</th>
+      <th>Issued Date</th>
+      <th>Return Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @overdue_date_book.each do |v| %>
+    <tr>
+      <td><%= v.librarian_id %></td>
+      <td><%= v.book_id%></td>
+      <td><%= v.student%></td>
+      <td><%= v.created_at.to_date%></td>
+      <td><%= v.returndate%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back',root_page_path,class:"btn btn-outline-dark"%>
 <% end %>
