@@ -1,14 +1,14 @@
 <div class="pull-right"><br>
-<form action="<%= history_path %>">
-  <input type="text" placeholder="    Search here" name="search_key">
-  <button type="submit">Search</button>
-</form>
+  <form action="<%= history_path %>">
+    <input type="text" placeholder="    Search here" name="search_key">
+    <button type="submit">Search</button>
+  </form>
 </div><br>
 <h1 class="text-primary">List of Student</h1>
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
-   	  <th>Student Id</th>
+      <th>Student Id</th>
       <th>book Id</th>
       <th>Student name</th>
       <th>Issued Date</th>
@@ -16,15 +16,15 @@
     </tr>
   </thead>
   <tbody>
- 	<% @history.each do |view| %>
-  <tr>
- 	  <td><%= view.librarian_id %></td>
-    <td><%= view.book_id%></td>
-    <td><%= view.student%></td>
-    <td><%= view.created_at.to_date%></td>
-    <td><%= view.returndate%></td>
-  </tr>
-  <% end %>
+    <% @history.each do |view| %>
+    <tr>
+      <td><%= view.librarian_id %></td>
+      <td><%= view.book_id%></td>
+      <td><%= view.student%></td>
+      <td><%= view.created_at.to_date%></td>
+      <td><%= view.returndate%></td>
+    </tr>
+    <% end %>
   </tbody>
 </table>
 <%= link_to 'Back',root_page_path,class:"btn btn-outline-dark"%>

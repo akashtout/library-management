@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>libraryapp</title>
-    <nav class="navbar navbar-dark bg-dark ">
-      <div>
-        <a class="navbar-brand  " href="">Library Management System</a>
-      </div>
-      <%if current_librarian %>
-      <div class="modal" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header"></div>
-            <div class="modal-content" id='modal_content'></div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-              </div>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>libraryapp</title>
+  <nav class="navbar navbar-dark bg-dark ">
+    <div>
+      <a class="navbar-brand  " href="">Library Management System</a>
+    </div>
+    <%if current_librarian %>
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"></div>
+          <div class="modal-content" id='modal_content'></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
-      <a class="navbar-brand  " href="/root_page">Home</a>
-      <%= link_to "Sign out", destroy_librarian_session_path, :method => :delete ,class:"  navbar-brand  float-end"%>
-      <%= link_to "View profile", current_user_profile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
-      <%= link_to 'Edit profile', edit_librarian_registration_path, :class => 'navbar-brand  float-end' %>
-      <% else %>
-      <%= link_to "Sign up", new_librarian_registration_path,class:"  navbar-brand  float-end"%>
-      <%= link_to "Log In", new_librarian_session_path,class:"  navbar-brand  float-end"%>
-      <% end %>
-    </nav>
-  </head>
-  <body>
-    <% flash.each do |type, msg| %>
-    <div> <%= msg %> </div>
+    </div>
+    <a class="navbar-brand  " href="/root_page">Home</a>
+    <%= link_to "Sign out", destroy_librarian_session_path, :method => :delete ,class:"  navbar-brand  float-end"%>
+    <%= link_to "View profile", current_user_profile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
+    <%= link_to 'Edit profile', edit_librarian_registration_path, :class => 'navbar-brand  float-end' %>
+    <% else %>
+    <%= link_to "Sign up", new_librarian_registration_path,class:"  navbar-brand  float-end"%>
+    <%= link_to "Log In", new_librarian_session_path,class:"  navbar-brand  float-end"%>
     <% end %>
-  </body>
-  </html>
+  </nav>
+</head>
+<body>
+  <% flash.each do |type, msg| %>
+  <div> <%= msg %> </div>
+  <% end %>
+</body>
+</html>
 
 
 

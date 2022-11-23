@@ -1,5 +1,4 @@
 class Book < ApplicationRecord
-
   require 'csv'
   include ExportCsv
   paginates_per 10
