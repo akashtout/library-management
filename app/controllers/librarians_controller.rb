@@ -2,6 +2,7 @@ class LibrariansController < ApplicationController
   before_action :authenticate_librarian!
   before_action :set_librarian , only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
+
   rescue_from CanCan::AccessDenied do |exception|
     render json: {warning: exception, status: "Authorization failed"}
   end
@@ -72,7 +73,8 @@ class LibrariansController < ApplicationController
   private
 
   def set_librarian
-    @librarian = Librarian.new(librarian_params)    
+    #@librarian = Librarian.new(librarian_params)
+    @librarian = Librarian.find(params[:id])    
   end
 
   def librarian_params

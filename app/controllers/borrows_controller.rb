@@ -31,8 +31,6 @@ class BorrowsController < ApplicationController
     end
   end
 
-
-
   def show
   end
 

@@ -5,6 +5,7 @@
       <th>Name</th>
       <th>Email</th>
       <th>User Type</th>
+      <th>Remove User</th>
     </tr>
   </thead>
   <tbody  >
@@ -13,6 +14,7 @@
       <td><%= link_to l.name%></td>
       <td><%= link_to l.email %></td>
       <td><%= link_to l.usertype%></td>
+      <td><%= link_to "Remove", destroy_user_path(l),method: :delete, remote: true ,class:"btn btn-outline-danger"%></td>
     </tr>
     <% end %>
   </tbody>
