@@ -14,7 +14,6 @@ class BooksController < ApplicationController
   end
 
   def create_book
-    # binding.pry
     Book.import(params[:book][:file])
     flash[:notice] = "Books uploaded successfully"
     redirect_to root_page_path
@@ -27,12 +26,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    if params[:search_key]
-      @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
-        "%#{params[:search_key]}%", "%#{params[:search_key]}%")
-    else
-      @books = Book.all.page(params[:page])
-    end
+    @books = Book.all.page(params[:page])
   end
 
   def studentindex
@@ -102,6 +96,6 @@ class BooksController < ApplicationController
   end
   
   def book_params
-    params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :search_key, :image)
+    params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :image)
   end
 end

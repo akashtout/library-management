@@ -1,43 +1,36 @@
-  <div class="pull-right"><br>
-    <form action="<%= books_path %>">
-      <input type="text" placeholder="    Search here" name="search_key">
-      <button type="submit">Search</button>
-    </form>
-  </div><br>
+<br><%= button_to "Download CSV", download_path(request.params.merge(format: :csv)), data: {turbo: :false},class:"btn btn-outline-success" %><br>
 
-  <%= button_to "Download CSV", download_path(request.params.merge(format: :csv)), data: {turbo: :false},class:"btn btn-outline-success" %><br>
-
-  <h1 class="text-success">Availabe Books</h1>
-  <table class="table table-bordered">
-    <thead  class="thead-dark">
-      <tr >
-        <th>Id No.</th>
-        <th>Title</th>
-        <th>Price</th>
-        <th >Description</th>
-        <th>Author Name</th>
-        <th>View</th>
-        <th>Edit</th>
-        <th>Remove</th>
-      </tr>
-    </thead>
-    <tbody  id="bookcreate">
-      <% @books.each do |books| %> 
-      <tr  id="remove<%= books.id %>">
-        <td><%= link_to books.id%></td>
-        <td><%= link_to books.title %></td>
-        <td><%= link_to books.price%></td>
-        <td><%= link_to books.description%></td>    
-        <td><%= link_to books.author_name%></td>
-        <td><%= link_to  'View', book_path(books) ,class:"btn btn-outline-success"%></td>
-        <td><%= link_to  'Edit', edit_book_path(books) ,class:"btn btn-outline-dark"%></td>
-        <td><%= link_to  'Remove', destroy_path(books), method: :delete,class:"btn btn-outline-danger",remote: true %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= paginate @books %> <br>
-  <%= link_to 'Back to Home',root_page_path, class: "btn btn-outline-dark" %>
-  <%= link_to 'Trash Bin', trashbin_path, class: "btn btn-outline-warning" %>
+<h1 class="text-success">Availabe Books</h1>
+<table class="table table-bordered">
+  <thead  class="thead-dark">
+    <tr >
+      <th>Id No.</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th >Description</th>
+      <th>Author Name</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+  <tbody  id="bookcreate">
+    <% @books.each do |books| %> 
+    <tr  id="remove<%= books.id %>">
+      <td><%= link_to books.id%></td>
+      <td><%= link_to books.title %></td>
+      <td><%= link_to books.price%></td>
+      <td><%= link_to books.description%></td>    
+      <td><%= link_to books.author_name%></td>
+      <td><%= link_to  'View', book_path(books) ,class:"btn btn-outline-success"%></td>
+      <td><%= link_to  'Edit', edit_book_path(books) ,class:"btn btn-outline-dark"%></td>
+      <td><%= link_to  'Remove', destroy_path(books), method: :delete,class:"btn btn-outline-danger",remote: true %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @books %> <br>
+<%= link_to 'Back to Home',root_page_path, class: "btn btn-outline-dark" %>
+<%= link_to 'Trash Bin', trashbin_path, class: "btn btn-outline-warning" %>
 
 

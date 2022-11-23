@@ -18,9 +18,11 @@
       #binding.pry
       if Borrow.where(status: false, book_id: params[:book_id]).present?
         respond_to root_page_path
+      elsif Borrow.where(status: true, book_id: params[:book_id]).present?
+        respond_to root_page_path
       else
         @borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
-          student: current_librarian.name, status: false, returndate: "2022-11-08".to_date)
+        student: current_librarian.name, status: false, returndate: "2022-11-08".to_date)
         if @borrow.save
           respond_to do |format|
             format.html 
