@@ -34,17 +34,14 @@ class LibrariansController < ApplicationController
   end
 
   def edit
-    #@librarian = Librarian.find(params[:id])
   end
 
   def destroy
-    #@librarian = Librarian.find(params[:id])
     @librarian.destroy
     redirect_to root_page_path
   end
 
   def show
-    #@librarian = Librarian.find(params[:id])  
   end
 
   def create
@@ -65,7 +62,6 @@ class LibrariansController < ApplicationController
   end
 
   def update
-    #@librarian = Librarian.find(params[:id])
     if @librarian.update(librarian_params)
       redirect_to root_page_path
     else
