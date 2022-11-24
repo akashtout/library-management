@@ -1,9 +1,11 @@
-<div class="pull-right"><br>
-  <form action="<%= history_path %>">
-    <input type="text" placeholder="    Search here" name="search_key">
-    <button type="submit">Search</button>
-  </form>
-</div><br>
+<br><%= form_tag student_history_path, :method => "get" do %>
+<%= label_tag(:search, "Search:") %>
+<%= text_field_tag :search , params[:search] %>
+<%= submit_tag("Search") %>
+<% end %>
+
+
+
 <h1 class="text-primary">List of Student</h1>
 <table class="table table-bordered">
   <thead class="thead-dark">
@@ -16,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @history.each do |view| %>
+    <% @student_history.each do |view| %>
     <tr>
       <td><%= view.librarian_id %></td>
       <td><%= view.book_id%></td>

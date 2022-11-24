@@ -12,7 +12,7 @@ class Ability
       can :manage, :all
       cannot [:borrowshow, :overdue_date_book], Borrow
       cannot [:index,:trashbin], Book
-      cannot [:index, :history, :edit, :show, :destroy], Librarian
+      cannot [:index, :student_history, :edit, :show, :destroy], Librarian
     end
     #   return unless user.admin?
     #   can :manage, :all

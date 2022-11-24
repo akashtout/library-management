@@ -5,6 +5,10 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
+
+require("select2")
+require("@rails/ujs").start()
+require("packs/select2")
 require("jquery")
 require("jquery")     
 require("bootstrap")
@@ -13,6 +17,8 @@ require("@rails/activestorage").start()
 require("channels")
 
 require("@popperjs/core")
+
+
 
 
 // import the application.scss we created for the bootstrap CSS (if you are not using assets stylesheet)
@@ -61,7 +67,3 @@ $(document).ready(function(){
   }
 
 });
-
-
- 
-

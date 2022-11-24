@@ -25,15 +25,6 @@ class LibrariansController < ApplicationController
     end
   end
 
-  def history
-    if params[:search_key]
-      @history = Borrow.where("librarian_id LIKE ? OR student LIKE ? ", 
-        "%#{params[:search_key]}%", "%#{params[:search_key]}%")
-    else
-      @history=Borrow.where(status:'true')
-    end
-  end
-
   def edit
   end
 
@@ -77,7 +68,7 @@ class LibrariansController < ApplicationController
   end
 
   def librarian_params
-    params.require(:librarian).permit(:name, :email, :password, :usertype, :search_key)
+    params.require(:librarian).permit(:name, :email, :password, :usertype, :search)
   end
 
 end

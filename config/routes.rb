@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :librarians, controllers: { sessions: 'librarians/sessions', registrations: "librarians/registrations" }
+  
+  get 'search' => 'books#search', as: :search
 
   post '/books/csv_download', to: 'books#csv_download',as: :download
   get 'books/insert_data' => 'books#insert_data'
@@ -39,6 +41,7 @@ Rails.application.routes.draw do
   get '/signup' => 'librarians#new'
   post '/librarians' => 'librarians#create'
   get '/history' => 'librarians#history'
+  get '/student_history' => 'borrows#student_history'
 
   get '/login' => 'sessions#new'
   post '/creates' => 'sessions#create'

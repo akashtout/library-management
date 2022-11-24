@@ -27,7 +27,16 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all.page(params[:page])
+    if params[:search]
+      @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
+      "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(10)
+    else
+      @books=Book.all.page(params[:page]).per(10)
+    end
+  end
+
+  def search
+    @books = Book.search(params[:search])
   end
 
   def studentindex
@@ -36,7 +45,7 @@ class BooksController < ApplicationController
   end
   
   def new
-    @book = Book.new
+    @books = Book.new
     respond_to do |format|
       format.html
       format.js
@@ -97,6 +106,6 @@ class BooksController < ApplicationController
   end
   
   def book_params
-    params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :image)
+    params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :image, :search)
   end
 end

@@ -31,6 +31,15 @@ class BorrowsController < ApplicationController
     end
   end
 
+  def student_history
+    if params[:search]
+      @student_history = Borrow.where("librarian_id LIKE ? OR student LIKE ? ", 
+        "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @student_history=Borrow.where(status:'true')
+    end
+  end
+
   def show
   end
 

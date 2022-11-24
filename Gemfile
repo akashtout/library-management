@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+
+gem "select2-rails"
 gem 'kaminari'
 gem "sidekiq", "~> 6.0"
 gem 'cancancan'
