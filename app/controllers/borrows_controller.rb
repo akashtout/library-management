@@ -21,7 +21,7 @@ class BorrowsController < ApplicationController
       respond_to root_page_path
     else
       @borrow = Borrow.create(librarian_id: current_librarian.id, book_id: params[:book_id],
-      student: current_librarian.name, status: false, returndate: "2022-11-08".to_date)
+        student: current_librarian.name, status: false, returndate: "2022-11-08".to_date)
       if @borrow.save
         respond_to do |format|
           format.html 

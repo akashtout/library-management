@@ -73,7 +73,6 @@ class LibrariansController < ApplicationController
   private
 
   def set_librarian
-    #@librarian = Librarian.new(librarian_params)
     @librarian = Librarian.find(params[:id])    
   end
 
