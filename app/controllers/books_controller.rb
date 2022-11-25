@@ -35,10 +35,6 @@ class BooksController < ApplicationController
     end
   end
 
-  def search
-    @books = Book.search(params[:search])
-  end
-
   def studentindex
     borrow_id = Borrow.all.pluck(:book_id)
     @book = Book.where.not(id: borrow_id).page(params[:page])
