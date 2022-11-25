@@ -1,3 +1,9 @@
+<%= form_tag search_path, :method => "get" do %>
+<%= label_tag(:search, "Search:") %>
+<%= text_field_tag :search , params[:search] %>
+<%= submit_tag("Search", :title => nil) %>
+<% end %>
+
 <h1 class="text-success">All Users</h1>
 <table class="table table-bordered">
   <thead  class="thead-dark">

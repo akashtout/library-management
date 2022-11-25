@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :librarians, controllers: { sessions: 'librarians/sessions', registrations: "librarians/registrations" }
   
-  get 'search' => 'books#search', as: :search
+  get 'search' => 'librarians#search', as: :search
 
   post '/books/csv_download', to: 'books#csv_download',as: :download
   get 'books/insert_data' => 'books#insert_data'

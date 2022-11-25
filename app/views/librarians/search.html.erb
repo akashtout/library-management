@@ -1,0 +1,28 @@
+  <table class="table table-bordered">
+    <thead  class="thead-dark">
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody  >
+      <% @book.each do |book| %>
+      <tr>
+        <td><%= link_to book.title%></td>
+        <td><%= link_to book.author_name %></td>
+        <td> <%= link_to book.description%> </td>
+      </tr>
+      <% end %>
+      <% @borrow.each do |borrow| %>
+      <tr>
+        <td><%= link_to borrow.librarian_id%></td>
+        <td><%= link_to borrow.student %></td>
+        <td><%= link_to borrow.status %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  

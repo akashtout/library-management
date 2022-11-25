@@ -2,16 +2,10 @@
 
 <div class="form-group">  
 <%= form_with  url: books_path, method: :get do |f| %>
-<%= f.collection_select :search, Book.all, :title, :title, {include_blank: true}, class: "select2 form-control" %>
+<%= f.collection_select :search, Book.all, :title, :title, {include_blank: true}, class: "select" %>
 <%= f.submit "Search" %>   
 <%end%>
 </div>
-
- <!-- form_tag books_path, :method => "get" do %> -->
-<!-- label_tag(:search, "Search:") %> -->
- <!-- text_field_tag :search , params[:search] %> -->
- <!-- submit_tag("Search", :title => nil) %> -->
- <!-- end %> -->
 
 <h1 class="text-success">Availabe Books</h1>
 <table class="table table-bordered">
