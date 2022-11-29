@@ -15,14 +15,10 @@ class LibrariansController < ApplicationController
   end
 
   def search
-    if params[:search].blank?
+    if params[:search]
+      @librarian = Librarian.where(name: params[:search])
+    else params[:search].blank?
       redirect_to root_page_path
-    else
-      @parameter = params[:search]
-      @borrow = Borrow.where("librarian_id LIKE ? OR student LIKE ?", "%#{@parameter}", "%#{@parameter}")
-      @librarian = Librarian.where("email LIKE ?", "%#{@parameter}")
-      @author = Author.where("name LIKE ?", "%#{@parameter}")
-      @book = Book.where("author_name LIKE ? OR description LIKE ? ", "%#{@parameter}%", "%#{@parameter}%")
     end    
   end
 

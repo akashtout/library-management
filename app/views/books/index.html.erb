@@ -2,8 +2,8 @@
 
 <div class="form-group">  
 <%= form_with  url: books_path, method: :get do |f| %>
-<%= f.collection_select :search, Book.all, :title, :title, {include_blank: true}, class: "select" %>
-<%= f.submit "Search" %>   
+<%= f.collection_select :search, Book.all, :title, :title, {include_blank: true}, class: "select2" %>
+<%= f.submit "Search", :title => true %>   
 <%end%>
 </div>
 

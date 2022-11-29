@@ -5,9 +5,6 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
-
-require("select2")
-require("@rails/ujs").start()
 require("packs/select2")
 require("jquery")
 require("jquery")     
@@ -15,7 +12,6 @@ require("bootstrap")
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-
 require("@popperjs/core")
 
 
@@ -38,8 +34,7 @@ window.$ = window.jQuery = jQuery;
 
 
 Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+
 
 
 import $ from 'jquery';
