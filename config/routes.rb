@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :librarians, controllers: { sessions: 'librarians/sessions', registrations: "librarians/registrations" }
+  devise_for :librarians, controllers: {omniauth_callbacks: 'librarians/omniauth_callbacks', sessions: 'librarians/sessions', registrations: "librarians/registrations" ,
+   passwords: "librarians/passwords"}
   
   get 'search' => 'librarians#search', as: :search
 

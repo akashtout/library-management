@@ -4,6 +4,16 @@ class Librarians::RegistrationsController < Devise::RegistrationsController
    before_action :check_college_code, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+    def update_resource(resource, params)
+    if resource.provider == 'google_oauth2'
+      params.delete('current_password')
+      resource.password = params['password']
+      resource.update_without_password(params)
+    else
+      resource.update_with_password(params)
+    end
+  end
+
   # GET /resource/sign_up
  def new
     super

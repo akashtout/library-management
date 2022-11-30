@@ -1,8 +1,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+
+
 ruby '2.7.2'
 
+gem "dotenv-rails"
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
 
 gem "select2-rails"
 gem 'kaminari'

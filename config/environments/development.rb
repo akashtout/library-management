@@ -1,5 +1,5 @@
 require "active_support/core_ext/integer/time"
-
+require "omniauth-google-oauth2"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 config.serve_static_assets = true
@@ -80,4 +80,16 @@ config.assets.compile = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+
+config.action_mailer.delivery_method = :smtp
+  host = 'mailto:akash.tout@gmail.com' #replace with your own url
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => 'mailto:akash.tout@gmail.com',
+    :password             => 'rdvwljzftkbjbzsp',
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 end
