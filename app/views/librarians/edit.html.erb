@@ -1,7 +1,14 @@
-s<%if current_librarian %>
-<h1 class="text-success">Make librarian & student</h1><br>
-<%= form_for(@librarian) do |f| %>
-<h3><%= f.select :usertype, ['student', 'librarian']%></h3><br>
-<%= f.submit "Submit", class: "btn btn-outline-success" %>
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "librarians/shared/error_messages", resource: resource %>
+   
+  <div><h3><%= f.select :usertype, ['student', 'librarian']%></h3><br>
+</div>
+ 
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
 <% end %>
-<% end %>    
+

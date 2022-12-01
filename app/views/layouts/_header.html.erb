@@ -23,7 +23,12 @@
     <a class="navbar-brand  " href="/root_page">Home</a>
     <%= link_to "Sign out", destroy_librarian_session_path, :method => :delete ,class:"  navbar-brand  float-end"%>
     <%= link_to "View profile", current_user_profile_path,class:"  navbar-brand  float-end",data:{toggle:"modal",target:"#myModal",remote:true}%>
+    <%if check_student %>
     <%= link_to 'Edit profile', edit_librarian_registration_path, :class => 'navbar-brand  float-end' %>
+    <%elsif check_librarian%>
+    <%= link_to 'Edit profile', edit_librarian_registration_path, :class => 'navbar-brand  float-end' %>
+    <%else%>
+    <%end%>
     <% else %>
     <%= link_to "Sign up", new_librarian_registration_path,class:"  navbar-brand  float-end"%>
     <%= link_to "Log In", new_librarian_session_path,class:"  navbar-brand  float-end"%>

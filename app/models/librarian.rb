@@ -10,7 +10,7 @@ class Librarian < ApplicationRecord
     unless librarian
       
      librarian = Librarian.create(name: data['name'],
-      usertype: "student",
+      usertype: "",
       email: data['email'],
       password: Devise.friendly_token[0,20]
       )
@@ -19,6 +19,6 @@ class Librarian < ApplicationRecord
  end
  has_many :books, dependent: :destroy
  has_many :borrows, dependent: :destroy
- validates :name,:email,:usertype, presence: true
+ validates :name,:email, presence: true
  validates :email, uniqueness: true
 end

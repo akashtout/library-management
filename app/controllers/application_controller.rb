@@ -16,8 +16,25 @@ class ApplicationController < ActionController::Base
   
   protected
 
+  def after_sign_in_path_for(resource)
+    if check_librarian
+      root_page_path
+    elsif check_student
+      root_page_path
+    else
+      edit_librarian_registration_path
+    end
+  end
+
+  def after_sign_up_path_for(resource)
+    root_page_path
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :usertype])
+ 
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :usertype, :password_confirmation)}
+
   end
 end
 

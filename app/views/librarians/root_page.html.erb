@@ -55,7 +55,8 @@
 <li> <%= link_to 'All Users', index_path, class:"btn btn-outline-success"%></li><br>
 <li> <%= link_to 'insert data', books_insert_data_path, class:"btn btn-outline-success" ,data:{'toggle' => "modal", 'target' =>"#myModal",remote:true}%></li><br>
 <% else %>
-<h1>Please again visit after sometime!</h1>  
+<h1>Please Select Role</h1>
+<li> <%= link_to 'Select Identity', edit_librarian_registration_path, class:"btn btn-outline-success"%></li><br>
 <% end %>
 <% end %>
 

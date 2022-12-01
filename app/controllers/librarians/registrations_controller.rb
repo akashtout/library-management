@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Librarians::RegistrationsController < Devise::RegistrationsController
-   before_action :check_college_code, only: [:create]
+   before_action :check_college_code, only: [:create, :edit, :update]
   # before_action :configure_account_update_params, only: [:update]
 
     def update_resource(resource, params)
-    if resource.provider == 'google_oauth2'
+    if resource.usertype == 'google_oauth2'
       params.delete('current_password')
       resource.password = params['password']
       resource.update_without_password(params)
@@ -25,14 +25,14 @@ class Librarians::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   def edit
+     super
+   end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+   def update
+     super
+   end
 
   # DELETE /resource
   # def destroy

@@ -9,6 +9,7 @@ class LibrariansController < ApplicationController
 
   def index
     @librarian = Librarian.all
+
   end
 
   def root_page
