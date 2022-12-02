@@ -14,6 +14,8 @@
   <%= f.hidden_field :librarian_id, value: current_librarian.id %>
   <label for="fname">Quantity</label><br>
   <input type= "number" name=book_count placeholder= "Quantity" ></p>
+  <%= label_tag 'Category ID'%><br>
+  <%= f.number_field :category_id, :placeholder => "Category ID" %><br>
   <%= label_tag 'Set Profile'%><br>
   <%= f.file_field :image %></p>
   <%= f.submit "Submit", class: "btn btn-outline-success" %>   

@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   has_one_attached :image
   acts_as_paranoid 
   belongs_to :author
+  belongs_to :category
   has_many :borrows, dependent: :destroy
   belongs_to :librarian
   validates :title,:price,:author_name,:author_id, presence: true
@@ -19,6 +20,7 @@ class Book < ApplicationRecord
       book.author_id = row[3]
       book.author_name = row[4]
       book.librarian_id = row[5]
+      book.category_id = row[6]
       book.save
     end
   end

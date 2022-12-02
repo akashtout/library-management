@@ -1,5 +1,5 @@
 class BorrowsController < ApplicationController
-  before_action :validates, only: [:borrowshow, :showreturnbook, :overdue_date_book, :index]
+  before_action :validates, only: [:borrowshow, :showreturnbook, :overdue_date_book, :index, :student_history]
   before_action :set_borrow , only: [:show, :accept, :destroy, :reject, :returnbook]
 
   rescue_from CanCan::AccessDenied do |exception|

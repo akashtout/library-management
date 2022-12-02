@@ -1,13 +1,16 @@
-<br><%= button_to "Download CSV", download_path(request.params.merge(format: :csv)), data: {turbo: :false},class:"btn btn-outline-success" %><br>
-
-<div class="form-group">  
-<%= form_with  url: books_path, method: :get do |f| %>
-<%= f.collection_select :search, Book.all, :title, :title, {include_blank: true}, class: "select2" %>
-<%= f.submit "Search", :title => true %>   
-<%end%>
+<div class="float-end" >
+  <br><%= button_to "Download CSV", download_path(request.params.merge(format: :csv)), data: {turbo: :false} ,  class: "btn btn-success"%><br>
 </div>
+<div class="form-group"> 
+  <h3 class="text-success">Category By</h3> 
+  <%= form_with  url: books_path, method: :get do |f| %>
+  <%= f.collection_select :search,  Category.all, :id, :name, multiple: true, class: "select2" , prompt: true%>
+  <%= f.submit "Filter" %>   
+  <%end%>
+</div><br>
+<%= link_to 'Refresh',books_path, class: "btn btn-outline-success" %>
 
-<h1 class="text-success">Availabe Books</h1>
+<br><h1 class="text-success">Availabe Books</h1>
 <table class="table table-bordered">
   <thead  class="thead-dark">
     <tr >
@@ -36,7 +39,7 @@
     <% end %>
   </tbody>
 </table>
- <%= paginate @books %> <br>
+<%= paginate @books %> <br>
 <%= link_to 'Back to Home',root_page_path, class: "btn btn-outline-dark" %>
 <%= link_to 'Trash Bin', trashbin_path, class: "btn btn-outline-warning" %>
 

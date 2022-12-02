@@ -13,6 +13,8 @@
   <%= label_tag 'Author'%><br>
   <%= f.text_field :author_name, :placeholder => "Author" %><br>
   <%= f.hidden_field :librarian_id, value: current_librarian.id %>
+  <%= label_tag 'Category ID'%><br>
+  <%= f.number_field :category_id, :placeholder => "Category ID" %><br>
   <%= label_tag 'Set Profile image'%><br>
   <%= f.file_field :image %></p>
   <%= f.submit "Submit", class: "btn btn-outline-success" %>   

@@ -28,8 +28,7 @@ class BooksController < ApplicationController
 
   def index
     if params[:search]
-      @books = Book.where("title LIKE ? OR author_name LIKE ? ", 
-      "%#{params[:search]}%", "%#{params[:search]}%").page(params[:page]).per(10)
+      @books = Book.where("category_id LIKE ? ", params[:search]).page(params[:page]).per(10)
     else
       @books=Book.all.page(params[:page]).per(10)
     end
@@ -102,6 +101,7 @@ class BooksController < ApplicationController
   end
   
   def book_params
-    params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :image, :search)
+    params.require(:book).permit(:title, :price, :description, :author_id, :author_name, :librarian_id, :image, :search, :category_id)
   end
+  
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_21_065413) do
+ActiveRecord::Schema.define(version: 2022_12_01_140217) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_11_21_065413) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
     t.integer "librarian_id"
+    t.integer "category_id"
     t.index ["deleted_at"], name: "index_books_on_deleted_at"
   end
 
@@ -69,6 +70,12 @@ ActiveRecord::Schema.define(version: 2022_11_21_065413) do
     t.date "returndate"
     t.index ["book_id"], name: "index_borrows_on_book_id"
     t.index ["librarian_id"], name: "index_borrows_on_librarian_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "demos", force: :cascade do |t|
@@ -113,6 +120,7 @@ ActiveRecord::Schema.define(version: 2022_11_21_065413) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "books", "categories"
   add_foreign_key "borrows", "books"
   add_foreign_key "borrows", "books"
 end

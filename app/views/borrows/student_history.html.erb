@@ -1,10 +1,10 @@
-<br><%= form_tag student_history_path, :method => "get" do %>
-<%= label_tag(:search, "Search:") %>
-<%= text_field_tag :search , params[:search] %>
-<%= submit_tag("Search") %>
-<% end %>
-
-
+<div class="float-end" >
+  <br><%= form_tag student_history_path, :method => "get" do %>
+  <%= label_tag(:search, "Search:") %>
+  <%= text_field_tag :search , params[:search] %>
+  <%= submit_tag("Search") %>
+  <% end %>
+</div><br>
 
 <h1 class="text-primary">List of Student</h1>
 <table class="table table-bordered">
